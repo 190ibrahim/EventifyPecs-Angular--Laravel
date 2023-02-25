@@ -42,7 +42,7 @@ Follow these steps to install and run this project on your local machine:
 1. Navigate to your project worksapce directory: `cd xampp/htdocs`
 2. Clone the repository to your local machine: `git clone https://github.com/190ibrahim/codeMavericks.git`
 3. Navigate to the Front_end directory of the project: `cd codeMavericks/Front_end`
-4. Install the necessary dependencies for angular: `nmp install`
+4. Install the necessary dependencies for angular: `npm install`
 5. Test if it is working: `npm run start`
 6. Navigate to the Back_end directory of the project: `cd codeMavericks/Back_end`
 7. Install the necessary dependencies for angular: `composer install`
