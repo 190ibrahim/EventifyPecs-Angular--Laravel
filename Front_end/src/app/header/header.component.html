@@ -11,7 +11,8 @@
     <div class="head-content-right">
       <div class="head-menu">
         <div class="head-menu-item">
-          <button class="head-menu-item-btn ripple">
+          <!-- [cdkMenuTriggerFor]="LanguageOverlay" -->
+          <button class="head-menu-item-btn ripple" >
             <img src="assets/sidenav/flags/us.jpg" class="flag" alt="flag">
           </button>
         </div>
@@ -40,3 +41,12 @@
     </div>
   </div>
 </div>
+<!-- <ng-template #LanguageOverlay>
+  <div class="overlay overlay-language overlay-fall" cdkMenu>
+    <ul>
+      <li *ngFor="let lang of languages" cdkMenuItem> <img [src]="'assets/flags/' + lang. flag + '.jpg'" alt="flag">
+        <span>{{lang.language}}</span>
+      </li>
+    </ul>
+  </div>
+</ng-template> -->
