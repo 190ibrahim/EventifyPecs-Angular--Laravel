@@ -1,7 +1,7 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
     <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">A</button>
-        <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div>
+        <button class="logo" (click)="toggleCollapse()">UP</button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">EventifyUP</div>
         <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
             <i class="fal fa-times close-icon"></i>
         </button>
@@ -21,10 +21,10 @@
                         [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
                     ></i>
                 </a>
-    
-                <a class="sidenav-nav-link" 
+
+                <a class="sidenav-nav-link"
                     *ngIf="!data.items || (data.items && data.items.length === 0)"
-                    [routerLink]="[data.routeLink]" 
+                    [routerLink]="[data.routeLink]"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}"
                     (click)="shrinkItems(data)"

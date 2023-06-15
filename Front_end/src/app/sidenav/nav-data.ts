@@ -7,7 +7,7 @@ export const navbarData: INavbarData[] = [
         label: 'Dashboard'
     },
     {
-        routeLink: 'products',
+        routeLink: 'Events',
         icon: 'fal fa-box-open',
         label: 'Products',
         items: [
