@@ -7,7 +7,7 @@ export const navbarData: INavbarData[] = [
         label: 'Dashboard'
     },
     {
-        routeLink: 'Events',
+        routeLink: 'Products',
         icon: 'fal fa-box-open',
         label: 'Products',
         items: [
@@ -38,6 +38,31 @@ export const navbarData: INavbarData[] = [
             {
                 routeLink: 'products/level1.2',
                 label: 'Level 1.2',
+            }
+        ]
+    },
+    {
+        routeLink: 'events',
+        icon: 'fal fa-sharp fa-solid fa-icons',
+        label: 'Events',
+        items: [
+            {
+                routeLink: 'events/list',
+                label: 'Events Lists',
+                items: [
+                    {
+                        routeLink: 'events/eventList',
+                        label: 'Events Lists',
+                    },
+                    {
+                        routeLink: 'events/eventsCalender',
+                        label: 'Events Calendar',
+                    },
+                ]
+            },
+            {
+                routeLink: 'events/create',
+                label: 'Create Event',
             }
         ]
     },

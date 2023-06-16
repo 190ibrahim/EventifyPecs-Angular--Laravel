@@ -26,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
     SettingsComponent,
     SublevelMenuComponent,
     HeaderComponent
+
   ],
   imports: [
     BrowserModule,

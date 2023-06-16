@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
   },
+  {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
+  },
   {path: 'statistics', component: StatisticsComponent},
   {
     path: 'coupens',
