@@ -66,7 +66,7 @@
             margin-left: 5px;
             outline: 0;
             color: #495057;
-
+            transition: background-color 0.3s ease;
             .flag {
               height: 17px;
               border-radius: 3px;
@@ -85,6 +85,10 @@
             box-shadow: none;
             border-radius: 1.875rem;
           }
+
+          .head-menu-item-btn.sign-up {
+            background-color: #fa0;
+          }
           .head-menu-item-btn:hover,
           .head-menu-item-btn:focus {
             background: #eff2f3;
@@ -93,6 +97,10 @@
             }
           }
         }
+
+
+
+
       }
 
       .head-user-avatar-container {
