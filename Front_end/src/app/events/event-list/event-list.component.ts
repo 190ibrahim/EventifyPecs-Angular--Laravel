@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent {
-
+url: string = "../assets/img1.jpg";
+    imageChange(event: any){
+        this.url = event.target.src;
+    }
 }
