@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
->>>>>>> df8d5f088f2d47b3300f708c0e7ec75add20ab2b
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
@@ -18,17 +14,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { HeaderComponent } from './header/header.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-=======
     BodyComponent,
     SidenavComponent,
     DashboardComponent,
@@ -38,13 +26,12 @@ import { HeaderComponent } from './header/header.component';
     SettingsComponent,
     SublevelMenuComponent,
     HeaderComponent
-
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
->>>>>>> df8d5f088f2d47b3300f708c0e7ec75add20ab2b
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
