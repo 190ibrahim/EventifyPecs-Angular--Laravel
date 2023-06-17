@@ -51,7 +51,7 @@
       .head-menu {
         display: flex;
         flex-direction: row;
-        align-items: ce;
+        align-items: center;
         margin-left: 1.25rem;
 
         .head-menu-item {
@@ -72,6 +72,18 @@
               border-radius: 3px;
               margin-top: 2px;
             }
+          }
+          .sign{
+            font-size: 18px;
+            width: 120px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            margin-left: 5px;
+            outline: 0;
+            color: #495057;
+            height: 2.375rem;
+            box-shadow: none;
+            border-radius: 1.875rem;
           }
           .head-menu-item-btn:hover,
           .head-menu-item-btn:focus {

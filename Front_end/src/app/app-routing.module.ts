@@ -9,7 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'events/eventList', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {
     path: 'products',
