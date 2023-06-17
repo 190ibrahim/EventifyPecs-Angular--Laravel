@@ -5,6 +5,7 @@ import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventsCalenderComponent } from './events-calender/events-calender.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EventsCalenderComponent } from './events-calender/events-calender.compo
   ],
   imports: [
     CommonModule,
-    EventsRoutingModule
+    EventsRoutingModule,
+    FullCalendarModule
   ]
 })
 export class EventsModule { }
