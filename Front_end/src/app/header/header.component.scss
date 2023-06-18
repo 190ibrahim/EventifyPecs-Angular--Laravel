@@ -166,13 +166,15 @@
   content: "";
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 5rem);
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease-out;
+  margin-left: 5rem;
 }
+
 .home.show::before {
   opacity: 1;
   pointer-events: auto;
@@ -314,7 +316,9 @@
   margin-top: 30px;
   width: 100%;
   padding: 10px 0;
-            border-radius: 1.875rem;}
+  border: none;
+  border-radius: 1.875rem;
+}
 
 .login_signup {
   font-size: 12px;

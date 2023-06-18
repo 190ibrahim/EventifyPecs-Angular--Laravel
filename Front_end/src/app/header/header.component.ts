@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   selectedLanguage: any;
   languages = languages;
   formOpenBtn: any;
-passwordToggleBtn!: HTMLButtonElement;
+  passwordToggleBtn!: HTMLButtonElement;
 
   constructor(private elementRef: ElementRef) {}
 
