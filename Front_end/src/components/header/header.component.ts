@@ -1,5 +1,8 @@
 import { Component, HostListener, Input, OnInit, ElementRef } from '@angular/core';
 import { languages } from './header-dummy-data';
+import { UserModel } from 'src/models/UserModel';
+import { UserService } from 'src/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +12,7 @@ import { languages } from './header-dummy-data';
 export class HeaderComponent implements OnInit {
   @Input() collapsed = false;
   @Input() screenWidth = 0;
+  @Input() navUser? : UserModel;
 
   canShowSearchAsOverlay = false;
   selectedLanguage: any;
@@ -16,13 +20,14 @@ export class HeaderComponent implements OnInit {
   formOpenBtn: any;
   passwordToggleBtn!: HTMLButtonElement;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private router : Router, private elementRef: ElementRef,  private userService : UserService) {}
 
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
     this.selectedLanguage = this.languages[0];
     this.formOpenBtn = this.elementRef.nativeElement.querySelector("#form-open");
     this.passwordToggleBtn = this.elementRef.nativeElement.querySelector(".pw_hide");
+
   }
 
   @HostListener('window:resize', ['$event'])
@@ -33,6 +38,17 @@ export class HeaderComponent implements OnInit {
   getHeadClass(): string {
     return this.collapsed && this.screenWidth > 768 ? 'head-trimmed' : 'head-md-screen';
   }
+
+  public logout(): void {
+    this.userService.logout().subscribe({
+        next: resp => {
+            this.router.navigate(['']);
+        },
+        error: err => {
+            console.error(err);
+        }
+    });
+}
 
   checkCanShowSearchAsOverlay(innerWidth: number): void {
     this.canShowSearchAsOverlay = innerWidth < 845;

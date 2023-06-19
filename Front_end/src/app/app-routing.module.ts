@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoupensComponent } from './coupens/coupens.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MediaComponent } from './media/media.component';
-import { PagesComponent } from './pages/pages.component';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { StatisticsComponent } from '../pages/statistics/statistics.component';
+import { PagesComponent } from '../pages/pages/pages.component';
+import { MediaComponent } from '../pages/media/media.component';
 import { ProductsComponent } from './products/products.component';
-import { SettingsComponent } from './settings/settings.component';
-import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from '../pages/settings/settings.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'events/eventList', pathMatch: 'full'},

@@ -10,38 +10,38 @@
     </div>
     <div class="head-content-right">
       <div class="head-menu">
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="!navUser">
           <button class="head-menu-item-btn sign ripple" (click)="handleFormOpenClick('login')">
             <i class="far fa-sign-in-alt menu-icon" id="form-open"></i> Sign In
           </button>
         </div>
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="!navUser">
           <button class="head-menu-item-btn sign sign-up ripple" (click)="handleFormOpenClick('signup')">
             <i class="far fa-user-plus menu-icon"></i> Sign Up
           </button>
         </div>
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="navUser">
           <button class="head-menu-item-btn ripple">
             <img src="assets/sidenav/flags/us.jpg" class="flag" alt="flag">
           </button>
         </div>
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="navUser">
           <button class="head-menu-item-btn ripple">
-            <i class="far fa-power-off menu-icon"></i>
+            <i class="far fa-power-off menu-icon" (click)="logout()"></i>
           </button>
         </div>
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="navUser">
           <button class="head-menu-item-btn ripple">
             <i class="far fa-bell menu-icon"></i>
           </button>
         </div>
-        <div class="head-menu-item">
+        <div class="head-menu-item" *ngIf="navUser">
           <button class="head-menu-item-btn ripple">
             <i class="far fa-comment-alt menu-icon"></i>
           </button>
         </div>
       </div>
-      <div class="head-user-avatar-container">
+      <div class="head-user-avatar-container" *ngIf="navUser">
         <div class="head-user-avatar">
           <img src="assets/sidenav/user3.jpg" alt="user" class="user-avatar">
           <div class="circle-indicator pulse"></div>
@@ -51,7 +51,7 @@
   </div>
 
 
-  <section class="home">
+  <section class="home" *ngIf="!navUser">
     <div class="form_container">
       <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
       <!-- Login From -->
