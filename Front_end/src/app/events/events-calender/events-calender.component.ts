@@ -30,7 +30,10 @@ export class EventsCalenderComponent {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    events: []
+    events: [
+      { title: 'Event 1', date: '2023-06-19' },
+        { title: 'Event 2', date: '2023-06-20' },
+    ]
   };
   // constructor(private http: HttpClient) {}
   // ngOnInit() {

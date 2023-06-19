@@ -1,4 +1,4 @@
-<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)" [navUser]="user"></app-sidenav>
 <app-header
     [navUser]="user"
     [collapsed]="isSideNavCollapsed"

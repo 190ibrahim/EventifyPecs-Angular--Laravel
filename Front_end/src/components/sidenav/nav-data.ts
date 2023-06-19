@@ -4,7 +4,8 @@ export const navbarData: INavbarData[] = [
     {
         routeLink: 'dashboard',
         icon: 'fal fa-home',
-        label: 'Dashboard'
+        label: 'Dashboard',
+        forLoggedin: true
     },
     {
         routeLink: 'Products',
@@ -39,7 +40,8 @@ export const navbarData: INavbarData[] = [
                 routeLink: 'products/level1.2',
                 label: 'Level 1.2',
             }
-        ]
+        ],
+        forLoggedin: false
     },
     {
         routeLink: 'events',
@@ -64,12 +66,14 @@ export const navbarData: INavbarData[] = [
                 routeLink: 'events/create',
                 label: 'Create Event',
             }
-        ]
+        ],
+        forLoggedin: false
     },
     {
         routeLink: 'statistics',
         icon: 'fal fa-chart-bar',
-        label: 'Statistics'
+        label: 'Statistics',
+        forLoggedin: false
     },
     {
         routeLink: 'coupens',
@@ -84,17 +88,20 @@ export const navbarData: INavbarData[] = [
                 routeLink: 'coupens/create',
                 label: 'Create Coupens'
             }
-        ]
+        ],
+        forLoggedin: false
     },
     {
         routeLink: 'pages',
         icon: 'fal fa-file',
-        label: 'Pages'
+        label: 'Pages',
+        forLoggedin: false
     },
     {
         routeLink: 'media',
         icon: 'fal fa-camera',
-        label: 'Media'
+        label: 'Media',
+        forLoggedin: false
     },
     {
         routeLink: 'settings',
@@ -110,6 +117,7 @@ export const navbarData: INavbarData[] = [
                 routeLink: 'settings/customize',
                 label: 'Customize'
             }
-        ]
+        ],
+        forLoggedin: true
     },
 ];

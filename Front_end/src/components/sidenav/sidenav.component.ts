@@ -1,8 +1,10 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
-import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, HostListener, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
+import { UserModel } from 'src/models/UserModel';
+import { UserService } from 'src/services/user.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -17,7 +19,7 @@ interface SideNavToggle {
     fadeInOut,
     trigger('rotate', [
       transition(':enter', [
-        animate('1000ms', 
+        animate('1000ms',
           keyframes([
             style({transform: 'rotate(0deg)', offset: '0'}),
             style({transform: 'rotate(2turn)', offset: '1'})
@@ -29,6 +31,8 @@ interface SideNavToggle {
 })
 export class SidenavComponent implements OnInit {
 
+  @Input() navUser? : UserModel;
+  
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
@@ -44,10 +48,11 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
       this.screenWidth = window.innerWidth;
+
   }
 
   toggleCollapse(): void {

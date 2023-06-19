@@ -6,6 +6,7 @@ export interface INavbarData {
     label: string;
     expanded?: boolean;
     items?: INavbarData[];
+    forLoggedin?: boolean;
 }
 
 export const fadeInOut = trigger('fadeInOut', [
