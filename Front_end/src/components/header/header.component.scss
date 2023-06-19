@@ -172,16 +172,9 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease-out;
-}
-.home-trimmed {
-  width: calc(100% - 16.5625rem);
-  margin-left: 16.5625rem;
+  margin-right: 2rem;
 }
 
-.home-md-screen {
-  width: calc(100% - 5rem);
-  margin-left: 5rem;
-}
 
 .home.show::before {
   opacity: 1;
@@ -189,6 +182,7 @@
 }
 /* From */
 .form_container {
+  margin-top: 40px;
   position: fixed;
   max-width: 320px;
   width: 100%;
@@ -258,7 +252,7 @@
 }
 
 .input_box input:focus {
-  border-color: #7d2ae8;
+  border-color: #fa0;
 }
 
 .input_box i {
@@ -269,14 +263,14 @@
   color: #707070;
 }
 
-.input_box i.email,
+.input_box i.field,
 .input_box i.password {
   left: 0;
 }
 
-.input_box input:focus~i.email,
+.input_box input:focus~i.field,
 .input_box input:focus~i.password {
-  color: #7d2ae8;
+  color: #fa0;
 }
 
 .input_box i.pw_hide {
@@ -332,4 +326,21 @@
   font-size: 12px;
   text-align: center;
   margin-top: 15px;
+}
+
+
+form.ng-loginSubmitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+form.ng-submitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 12px;
+  color: #E8426E;
 }
