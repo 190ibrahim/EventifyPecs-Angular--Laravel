@@ -8,6 +8,22 @@ export const navbarData: INavbarData[] = [
         forLoggedin: false
     },
     {
+        routeLink: 'events',
+        icon: 'fal fa-sharp fa-solid fa-icons',
+        label: 'Events',
+        items: [
+                {
+                    routeLink: 'events/eventList',
+                    label: 'All Events',
+                },
+                {
+                    routeLink: 'events/eventsCalender',
+                    label: 'Events Calendar',
+                },
+        ],
+        forLoggedin: false
+    },
+    {
         routeLink: 'Products',
         icon: 'fal fa-box-open',
         label: 'Products',
@@ -43,32 +59,7 @@ export const navbarData: INavbarData[] = [
         ],
         forLoggedin: false
     },
-    {
-        routeLink: 'events',
-        icon: 'fal fa-sharp fa-solid fa-icons',
-        label: 'Events',
-        items: [
-            {
-                routeLink: 'events/list',
-                label: 'Events Lists',
-                items: [
-                    {
-                        routeLink: 'events/eventList',
-                        label: 'Events Lists',
-                    },
-                    {
-                        routeLink: 'events/eventsCalender',
-                        label: 'Events Calendar',
-                    },
-                ]
-            },
-            {
-                routeLink: 'events/create',
-                label: 'Create Event',
-            }
-        ],
-        forLoggedin: false
-    },
+
     {
         routeLink: 'statistics',
         icon: 'fal fa-chart-bar',
