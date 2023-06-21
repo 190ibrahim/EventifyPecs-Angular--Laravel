@@ -13,6 +13,15 @@ import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
+import { LayoutComponent } from './layout/layout.component';
+import { UserEventsComponent } from './user-events/user-events.component';
+import { UserRegEventsComponent } from './user-reg-events/user-reg-events.component';
+import { UserlayoutComponent } from './userlayout/userlayout.component';
+import { RegComponent } from './userlayout/reg/reg.component';
+import { UevetsComponent } from './userlayout/uevets/uevets.component';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +34,21 @@ import { HeaderComponent } from './header/header.component';
     MediaComponent,
     SettingsComponent,
     SublevelMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    LayoutComponent,
+    UserEventsComponent,
+    UserRegEventsComponent,
+    UserlayoutComponent,
+    RegComponent,
+    UevetsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

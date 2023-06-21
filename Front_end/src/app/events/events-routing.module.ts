@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventsComponent } from './events.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventsCalenderComponent } from './events-calender/events-calender.component';
+import { EditComponent } from './edit/edit.component';
+import { AdminAuthGuard } from '../admin-auth.guard';
 
 const routes: Routes = [
   {
     path: 'create',
-    component: EventsComponent
+    component: EventsComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'eventList',
@@ -15,8 +18,10 @@ const routes: Routes = [
   },
   {
     path: 'eventsCalender',
-    component: EventsCalenderComponent
-  }
+    component: EventsCalenderComponent,
+    canActivate: [AdminAuthGuard]
+  },
+  { path: 'edit/:id', component: EditComponent },
 ];
 
 @NgModule({

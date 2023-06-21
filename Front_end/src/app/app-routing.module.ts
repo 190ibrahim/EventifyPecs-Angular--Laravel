@@ -9,8 +9,13 @@ import { SettingsComponent } from './settings/settings.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'events/eventList', pathMatch: 'full'},
+  {path: '', redirectTo: 'auth', pathMatch: 'full'},
+  // {path: '', redirectTo: 'events/eventList', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
   {
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
