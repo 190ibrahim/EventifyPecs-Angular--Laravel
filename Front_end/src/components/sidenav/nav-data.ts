@@ -5,7 +5,7 @@ export const navbarData: INavbarData[] = [
         routeLink: 'dashboard',
         icon: 'fal fa-home',
         label: 'Dashboard',
-        forLoggedin: false
+        forLoggedin: true
     },
     {
         routeLink: 'events',
@@ -57,14 +57,14 @@ export const navbarData: INavbarData[] = [
                 label: 'Level 1.2',
             }
         ],
-        forLoggedin: false
+        forLoggedin: true
     },
 
     {
         routeLink: 'statistics',
         icon: 'fal fa-chart-bar',
         label: 'Statistics',
-        forLoggedin: false
+        forLoggedin: true
     },
     {
         routeLink: 'coupens',
@@ -80,19 +80,19 @@ export const navbarData: INavbarData[] = [
                 label: 'Create Coupens'
             }
         ],
-        forLoggedin: false
+        forLoggedin: true
     },
     {
         routeLink: 'pages',
         icon: 'fal fa-file',
         label: 'Pages',
-        forLoggedin: false
+        forLoggedin: true
     },
     {
         routeLink: 'media',
         icon: 'fal fa-camera',
         label: 'Media',
-        forLoggedin: false
+        forLoggedin: true
     },
     {
         routeLink: 'settings',

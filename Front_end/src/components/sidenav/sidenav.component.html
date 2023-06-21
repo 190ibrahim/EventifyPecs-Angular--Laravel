@@ -9,7 +9,7 @@
   <div class="scrollwrap scrollwrap_delayed">
     <ul class="sidenav-nav">
       <li class="sidenav-nav-item" *ngFor="let data of navData">
-        <ng-container *ngIf="!data.forLoggedin || (data.forLoggedin && navUser)">
+        <ng-container *ngIf="!data.forLoggedin || (data.forLoggedin && !navUser)">
           <a class="sidenav-nav-link" (click)="handleClick(data)" *ngIf="data.items && data.items.length > 0"
             [ngClass]="getActiveClass(data)">
             <i class="sidenav-link-icon" [class]="data.icon"></i>
