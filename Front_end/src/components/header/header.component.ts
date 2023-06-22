@@ -3,7 +3,7 @@ import { languages } from './header-dummy-data';
 import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   public invalidRegister: boolean = false;
 
 
-  constructor(private router : Router, private elementRef: ElementRef,private auth: AuthService,) {}
+  constructor(private router : Router, private elementRef: ElementRef,private auth: AuthService, private location: Location) {}
 
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
@@ -143,6 +143,10 @@ export class HeaderComponent implements OnInit {
           localStorage.setItem('user_id', this.user.id);
           localStorage.setItem('username', this.user.first_name);
           this.router.navigate(['']);
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            window.location.reload();
+          });
+
         },
         (err: any) => {
           console.log(err);
@@ -174,6 +178,9 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('user_id', this.user.id);
         localStorage.setItem('username', this.user.first_name);
         this.router.navigate(['']);
+                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            window.location.reload();
+          });
       },
       (err: any) => {
         console.log(err);
@@ -186,7 +193,8 @@ export class HeaderComponent implements OnInit {
   public logout(): void {
     localStorage.clear();
     this.router.navigate(['']);
-    this.isUserLoggedin = false;
+          this.isUserLoggedin = false;
+
   }
 }
 
