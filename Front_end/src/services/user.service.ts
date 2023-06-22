@@ -40,7 +40,7 @@ export class UserService {
 
     signUp(model: SignUpRequestModel): Observable<UserModel> {
         return this.http.post(
-            'http://localhost:8000/api/register',
+            'http://localhost:8000/register',
             JSON.stringify(model),
             {
                 headers: new HttpHeaders({

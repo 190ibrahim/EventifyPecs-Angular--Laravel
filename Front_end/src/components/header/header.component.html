@@ -10,38 +10,38 @@
     </div>
     <div class="head-content-right">
       <div class="head-menu">
-        <div class="head-menu-item" *ngIf="!navUser">
+        <div class="head-menu-item" *ngIf="!isUserLoggedin">
           <button class="head-menu-item-btn sign ripple" (click)="handleFormOpenClick('login')">
             <i class="far fa-sign-in-alt menu-icon" id="form-open"></i> Sign In
           </button>
         </div>
-        <div class="head-menu-item" *ngIf="!navUser">
+        <div class="head-menu-item" *ngIf="!isUserLoggedin">
           <button class="head-menu-item-btn sign sign-up ripple" (click)="handleFormOpenClick('signup')">
             <i class="far fa-user-plus menu-icon"></i> Sign Up
           </button>
         </div>
-        <div class="head-menu-item" *ngIf="navUser">
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
           <button class="head-menu-item-btn ripple">
             <img src="assets/sidenav/flags/us.jpg" class="flag" alt="flag">
           </button>
         </div>
-        <div class="head-menu-item" *ngIf="navUser">
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
           <button class="head-menu-item-btn ripple">
             <i class="far fa-power-off menu-icon" (click)="logout()"></i>
           </button>
         </div>
-        <div class="head-menu-item" *ngIf="navUser">
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
           <button class="head-menu-item-btn ripple">
             <i class="far fa-bell menu-icon"></i>
           </button>
         </div>
-        <div class="head-menu-item" *ngIf="navUser">
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
           <button class="head-menu-item-btn ripple">
             <i class="far fa-comment-alt menu-icon"></i>
           </button>
         </div>
       </div>
-      <div class="head-user-avatar-container" *ngIf="navUser">
+      <div class="head-user-avatar-container" *ngIf="isUserLoggedin">
         <div class="head-user-avatar">
           <img src="assets/sidenav/user3.jpg" alt="user" class="user-avatar">
           <div class="circle-indicator pulse"></div>
@@ -51,7 +51,7 @@
   </div>
 
 
-  <section class="home" *ngIf="!navUser">
+  <section class="home" *ngIf="!isUserLoggedin">
     <div class="form_container">
       <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
       <!-- Login From -->
@@ -155,17 +155,40 @@
             Part(s) of the form are invalid.
           </div>
 
-          <!-- Date of Birth -->
+          <!-- Age Input -->
           <div class="input_box">
-            <input type="date" class="form-control" formControlName="dob">
+            <input type="number" class="form-control" formControlName="age" placeholder="Age">
             <i class="uil uil-calendar-alt field"></i>
           </div>
-          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['dob'].invalid">
-            <span *ngIf="registerForm.controls['dob'].errors?.['required']">Date of birth is required.</span>
+          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['age'].invalid">
+            <span *ngIf="registerForm.controls['age'].errors?.['required']">Age is required.</span>
+            <span *ngIf="registerForm.controls['age'].errors?.['min']">Age must be at least 18.</span>
           </div>
           <div class="invalid-feedback" *ngIf="invalidRegister">
             Part(s) of the form are invalid.
           </div>
+        <!-- Nationality Input -->
+        <div class="input_box">
+          <input type="text" class="form-control" formControlName="nationality" placeholder="Nationality">
+          <i class="uil uil-globe field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['nationality'].invalid">
+          <span *ngIf="registerForm.controls['nationality'].errors?.['required']">Nationality is required.</span>
+        </div>
+
+        <!-- Role Type Select -->
+        <div class="input_box">
+          <select class="form-control" formControlName="role">
+            <option value="" disabled selected>Select Role Type</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          <i class="uil uil-user field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['role'].invalid">
+          <span *ngIf="registerForm.controls['role'].errors?.['required']">Role type is required.</span>
+        </div>
+
 
           <div class="input_box">
           <input type="password" class="form-control" placeholder="Password" formControlName="password">

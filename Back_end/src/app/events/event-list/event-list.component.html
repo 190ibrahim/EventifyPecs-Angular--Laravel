@@ -1,0 +1,93 @@
+<section class="bg-color">
+  <div class="containers">
+    <div class="title">
+      <h2><span> Pécs's </span> Heart</h2>
+    </div>
+    <div class="row">
+
+      <div class="col-md-3" *ngFor="let item of events">
+        <div class="card">
+          <div class="card-main">
+            <div class="flexs">
+              <div class="count">9</div>
+              <span (click)="edit(item)" class="material-symbols-outlined">
+                edit
+                </span>
+            </div>
+            <div (click)="edit(item)"  class="image">
+              <img src="../../../assets/sidenav/profile-bg-3.png" alt="">
+            </div>
+            <div class="event-date event-date-green">{{item.event_created}}</div>
+            <div class="card-line"></div>
+          </div>
+         <div class="fl">
+          <div class="content">
+            <a href="javascript:void(0);">{{item.event_title}}</a>
+            <p><span class="location">{{item.event_description}}</span></p>
+            <p><span  class="price">$81.00</span></p>
+          </div>
+          <div *ngIf="isAdmin">
+            <span (click)="del(item)" class="material-symbols-outlined">
+              delete
+              </span>
+              <button (click)="registerEvent(item)" class="btn btn-primary">Register</button>
+          </div>
+         </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="count">10</div>
+            <div class="image">
+              <img src="../../../assets/sidenav/profile-bg-3.png" alt="">
+            </div>
+            <div class="event-date event-date-green">Wed, Sep 6, 8:00 AM</div>
+            <div class="card-line"></div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">BSidesOsijek 2023</a>
+            <p><span class="location">Cinema Urania • Osijek</span></p>
+            <p><span class="price">$81.00</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="count">8</div>
+            <div class="image">
+              <img src="../../../assets/sidenav/profile-bg-3.png" alt="">
+            </div>
+            <div class="event-date event-date-green">Wed, Sep 6, 8:00 AM</div>
+            <div class="card-line"></div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">BSidesOsijek 2023</a>
+            <p><span class="location">Cinema Urania • Osijek</span></p>
+            <p><span class="price">Free</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="count">8</div>
+            <div class="image">
+              <img src="../../../assets/sidenav/profile-bg-3.png" alt="">
+            </div>
+            <div class="event-date event-date-green">Wed, Sep 6, 8:00 AM</div>
+            <div class="card-line"></div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">BSidesOsijek 2023</a>
+            <p><span class="location">Cinema Urania • Osijek</span></p>
+            <p><span class="price">Free</span></p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
