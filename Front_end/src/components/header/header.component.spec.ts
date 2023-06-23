@@ -27,6 +27,9 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';  // This line
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -35,14 +38,14 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      providers: [AuthService],
-      imports: [RouterTestingModule, ReactiveFormsModule],
+      providers: [AuthService, UserService],
+      imports: [RouterTestingModule, ReactiveFormsModule, HttpClientTestingModule],  // add HttpClientTestingModule here
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+});
 
   it('should create', () => {
     expect(component).toBeTruthy();
