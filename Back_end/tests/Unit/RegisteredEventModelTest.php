@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class RegisteredEventModelTest extends TestCase
+class RegisteredModelTest extends TestCase
 {
     /**
      * A basic unit test example.
