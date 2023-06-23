@@ -12,7 +12,9 @@ export class EventListComponent {
   url: string = "../assets/img1.jpg";
 
   public events: any = [];
-  public isAdmin: any;
+  role_type: any;
+  public isAdmin : boolean= false;
+  public isUser : boolean= false;
 
 
 
@@ -25,7 +27,16 @@ export class EventListComponent {
 
   ngOnInit(): void {
     this.getEvents();
-    this.isAdmin = localStorage.getItem('admin');
+    this.role_type = localStorage.getItem('role_type');
+    console.log(this.role_type);
+    if (this.role_type==='admin') {
+      this.isAdmin = true;
+    } else if (this.role_type==='user'){
+      this.isUser = true;
+    }
+ 
+
+
   }
 
   getEvents() {
@@ -40,15 +51,35 @@ export class EventListComponent {
 
 
   registerEvent(event: any): void {
-  event.user_id = localStorage.getItem('user_id');
-  this.auth.registerEvent(event).subscribe(
-    (res: any) => {
-      console.log('Event registered successfully');
-    },
-    (err: any) => {
-      console.error('Failed to register event:', err);
-    }
-  );
-}
+    event.user_id = localStorage.getItem('user_id');
+    this.auth.registerEvent(event).subscribe(
+      (res: any) => {
+        console.log('Event registered successfully');
+      },
+      (err: any) => {
+        console.error('Failed to register event:', err);
+      }
+    );
+  }
 
+
+
+
+  edit(item: any) {
+    this.router.navigate(['' + item.id], {
+      queryParams: { id: item.id },
+    });
+  }
+
+
+  del(item: any) {
+    this.auth.deleteEvent(item.id).subscribe(
+      (res: any) => {
+        this.getEvents();
+      },
+      (err: any) => {
+        console.log('error in deleting');
+      }
+    );
+  }
 }

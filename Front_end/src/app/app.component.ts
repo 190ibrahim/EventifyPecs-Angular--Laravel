@@ -7,11 +7,14 @@ interface SideNavToggle {
   collapsed: boolean;
 }
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent {
   title = 'Front_end';
 
@@ -35,4 +38,8 @@ export class AppComponent {
           }
       });
   }
+
+
+
+  
 }
