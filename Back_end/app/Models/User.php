@@ -64,11 +64,14 @@ class User extends Authenticatable
         'license_acceptance' => 'boolean',
 
     ];
+    public function registeredEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class, 'registered_events');
+    }
 
 
     public function announcements()
 {
     return $this->hasMany(Announcement::class);
 }
-
 }
