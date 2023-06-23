@@ -7,6 +7,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventsCalenderComponent } from './events-calender/events-calender.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [
     CommonModule,
     EventsRoutingModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ReactiveFormsModule,
   ]
 })
 export class EventsModule { }

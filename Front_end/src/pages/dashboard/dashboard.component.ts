@@ -95,9 +95,6 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  getDateFormat(): string {
-  return 'mm/dd/yyyy';
-}
 
 }
 

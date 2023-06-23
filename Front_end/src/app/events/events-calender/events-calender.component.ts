@@ -6,6 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+
+import { AuthService } from 'src/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-events-calender',
   templateUrl: './events-calender.component.html',
@@ -13,6 +16,8 @@ import listPlugin from '@fullcalendar/list';
 })
 export class EventsCalenderComponent {
   calendarVisible = true;
+  public events: any = [];
+
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
@@ -29,27 +34,26 @@ export class EventsCalenderComponent {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    events: [
-      { title: 'Event 1', date: '2023-06-19' },
-        { title: 'Event 2', date: '2023-06-20' },
-    ]
+    events: []
   };
-  // constructor(private http: HttpClient) {}
-  // ngOnInit() {
-  //   this.fetchEvents();
-  // }
 
-  // fetchEvents() {
-  //   this.http.get<any[]>('/api/events').subscribe((events) => {
-  //     this.calendarOptions.events = events;
-  //   });
-  // }
+  constructor( private auth: AuthService, private router: Router, ) {}
 
-  // handleEventClick(clickInfo: EventClickArg) {
-  //   console.log('Event clicked:', clickInfo.event);
-  // }
-  //   handleEvents(events: EventApi[]) {
-  //   this.currentEvents = events;
-  //   this.changeDetector.detectChanges();
-  // }
+    ngOnInit(): void {
+      this.getEvents();
+    }
+
+getEvents() {
+    this.auth.getEvents().subscribe(
+      (res: any) => {
+        this.events = res.map((event: any) => ({
+          title: event.event_title,
+          date: event.start_date
+        }));
+        this.calendarOptions.events = this.events;
+        console.log(this.events);
+      },
+      (err: any) => {}
+    );
+  }
 }
