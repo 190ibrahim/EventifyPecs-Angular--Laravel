@@ -16,16 +16,13 @@
           </div>
           <div class="content">
             <a href="javascript:void(0);">{{ item.event_title }}</a>
-            <p><span class="location">{{ item.event_description }}</span></p>
+            <p><span class="location">Cinema Urania • Osijek</span></p>
             <p><span class="price">$81.00</span></p>
           </div>
-          <div class="register">
-            <button (click)="registerEvent(item)" class="register-button" *ngIf="isUser || isAdmin">Register</button>
-          </div>
-          <div class="buttons" *ngIf="isAdmin">
-            <button class="view-button" (click)="edit(item)">View</button>
-            <button class="view-button" >Edit</button>
-            <button class="view-button" >Delete</button>
+
+          <div class="buttons">
+            <button class="view-button">View</button>
+            <button (click)="registerEvent(item)" class="register-button">Register</button>
           </div>
         </div>
       </div>
