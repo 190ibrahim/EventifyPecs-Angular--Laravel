@@ -7,7 +7,7 @@
       <div class="left">
         <h2>Dashboard</h2>
       </div>
-      <a class="btn-event">
+      <a class="btn-event" (click)="handleFormOpenClick()">
         <i class='bx bx-calendar-plus'></i>
         <span class="text">Create Event</span>
       </a>
@@ -217,6 +217,113 @@
       </div>
     </div>
   </main>
+  <section class="home">
+    <div class="form_container">
+      <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
+
+      <div class="form">
+        <form class="register-form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+          <h2>Craete Event</h2>
+
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
+            <i class="uil uil-envelope-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_title'].invalid">
+            <span *ngIf="createEventForm.controls['event_title'].errors?.['required']">event_title is required.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidCreate">
+            Part(s) of the form are invalid.
+          </div>
+
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Event Description" formControlName="event_description">
+            <i class="uil uil-align-left-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_description'].invalid">
+            <span *ngIf="createEventForm.controls['event_description'].errors?.['required']">Event Description is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Event Image URL" formControlName="event_image">
+            <i class="uil uil-image field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_image'].invalid">
+            <span *ngIf="createEventForm.controls['event_image'].errors?.['required']">Event Image is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="date" class="form-control" placeholder="Event Created" formControlName="event_created">
+            <i class="uil uil-calendar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_created'].invalid">
+            <span *ngIf="createEventForm.controls['event_created'].errors?.['required']">Event Created is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="date" class="form-control" placeholder="Start Date" formControlName="start_date">
+            <i class="uil uil-calendar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_date'].invalid">
+            <span *ngIf="createEventForm.controls['start_date'].errors?.['required']">Start Date is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="date" class="form-control" placeholder="End Date" formControlName="end_date">
+            <i class="uil uil-calendar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_date'].invalid">
+            <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Event Badge" formControlName="event_badge">
+            <i class="uil uil-label-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_badge'].invalid">
+            <span *ngIf="createEventForm.controls['event_badge'].errors?.['required']">Event Badge is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
+            <i class="uil uil-ticket-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_ticket'].invalid">
+            <span *ngIf="createEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Waiting List" formControlName="waiting_list">
+            <i class="uil uil-users-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['waiting_list'].invalid">
+            <span *ngIf="createEventForm.controls['waiting_list'].errors?.['required']">Waiting List is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Status" formControlName="event_status">
+            <i class="uil uil-info-circle field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_status'].invalid">
+            <span *ngIf="createEventForm.controls['event_status'].errors?.['required']">Event Status is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Price" formControlName="price">
+            <i class="uil uil-dollar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['price'].invalid">
+            <span *ngIf="createEventForm.controls['price'].errors?.['required']">Price is required.</span>
+          </div>
+
+
+          <button class="button">Create Event</button>
+        </form>
+      </div>
+    </div>
+  </section>
   <!-- MAIN -->
 </section>
 <!-- CONTENT -->
@@ -248,3 +355,5 @@
          <button>
           <i class="far fa-plus"></i>
           Create New Group</button> -->
+
+

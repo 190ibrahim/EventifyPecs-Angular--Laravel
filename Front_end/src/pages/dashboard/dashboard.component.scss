@@ -13,6 +13,9 @@
   --light-yellow: #FFF2C6;
   --orange: #FD7238;
   --light-orange: #FFE0D3;
+  --overlay-color: rgba(0, 0, 0, 0.6);
+  --overlay-transition-duration: 0.5s;
+  --form-container-max-width: 320px;
 }
 
 
@@ -20,6 +23,9 @@
 #content main {
   width: 100%;
   font-family: var(--poppins);
+  z-index: 1;
+  overflow-y: auto;
+  position: relative;
 }
 
 #content main .head-title {
@@ -248,3 +254,159 @@
 
 /* MAIN */
 /* CONTENT */
+
+
+/* Home */
+.home {
+  background-position: center;
+  transition: all .5s ease;
+}
+
+.home::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--overlay-color);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--overlay-transition-duration) ease-out;
+}
+
+
+.home.show::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* From */
+.form_container {
+  margin-top: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: var(--form-container-max-width);
+  width: 100%;
+  z-index: 101;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  overflow-y: auto;
+}
+
+.home.show .form_container {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+.form_container.active {
+  display: block;
+}
+
+
+.form_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #0b0217;
+  font-size: 22px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.form_container h2 {
+  font-size: 22px;
+  color: #0b0217;
+  text-align: center;
+}
+
+.input_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+.input_box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+}
+
+.input_box input:focus {
+  border-color: #fa0;
+}
+
+.input_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+
+.input_box i.field {
+  left: 0;
+}
+
+.input_box input:focus~i.field {
+  color: #fa0;
+}
+
+
+
+.form_container a {
+  color: #fa0;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.form_container a:hover {
+  text-decoration: underline;
+}
+
+
+.form_container .button {
+  background: #fa0;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 1.875rem;
+}
+
+.form_container .button:hover {
+  background-color: #e09000;
+}
+
+form.ng-loginSubmitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+form.ng-submitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 12px;
+  color: #E8426E;
+}

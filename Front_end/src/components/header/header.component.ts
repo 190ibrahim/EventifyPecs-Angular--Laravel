@@ -178,9 +178,9 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('user_id', this.user.id);
         localStorage.setItem('username', this.user.first_name);
         this.router.navigate(['']);
-                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            window.location.reload();
-          });
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          window.location.reload();
+        });
       },
       (err: any) => {
         console.log(err);
