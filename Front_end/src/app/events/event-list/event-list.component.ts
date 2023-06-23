@@ -37,4 +37,18 @@ export class EventListComponent {
       (err: any) => {}
     );
   }
+
+
+  registerEvent(event: any): void {
+  event.user_id = localStorage.getItem('user_id');
+  this.auth.registerEvent(event).subscribe(
+    (res: any) => {
+      console.log('Event registered successfully');
+    },
+    (err: any) => {
+      console.error('Failed to register event:', err);
+    }
+  );
+}
+
 }
