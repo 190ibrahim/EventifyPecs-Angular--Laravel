@@ -96,11 +96,11 @@ class UserController extends Controller
         'username' => ['required'],
         'password' => ['required'],
         'date_of_birth'=>['required'],
-        'role_type' => ['required'] // Add role field
-        'license_acceptance' => ['required'] // Add role field
-        'remember_token' => ['required'] // Add role field
+        'role_type' => ['required'], // Add role field
+        'license_acceptance' => ['required'], // Add role field
+        'remember_token' => ['required'], // Add role field
 =        'email' => ['required', 'email', Rule::unique('users', 'email')],
-        'nationality' => ['required'],
+        'nationality' => ['required']
      ]);
     
     $user = User::create([
@@ -230,9 +230,11 @@ public function authenticate(Request $request)
 
 
 
-    public function announcement()
-    {
-        return $this -> HasMany(Announcement::class); //this is the relationship between the user and the announcement and $this is the user
+
+
+
+
+
+
     
-    }
 }

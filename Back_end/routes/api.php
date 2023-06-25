@@ -44,3 +44,7 @@ Route::post('/register',[UserController::class,'store']);
  Route::post('/login',[UserController::class,'authenticate']);
  //submit form
 //  Route::post('/users/authenticate',[UserController::class,'authenticate']);
+//
+
+Route::get("/categories",[CategoriesController::class,'index']);
+

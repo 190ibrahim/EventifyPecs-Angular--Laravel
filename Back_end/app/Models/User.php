@@ -29,7 +29,7 @@ class User extends Authenticatable
             'email',
             'email_verified_at',
             'nationality',
-            'confirmation_code',
+            'confirmation_code'
             ];
     /**
      * The attributes that should be hidden for serialization.
@@ -38,7 +38,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
     ];
 
     /**
