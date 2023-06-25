@@ -22,4 +22,3 @@ class RegisteredEventsFactory extends Factory
     }
 }
 
-php artisan make:seeder RegisteredEventsSeeder
