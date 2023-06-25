@@ -42,9 +42,7 @@ Route::post('/register',[UserController::class,'store']);
  Route::get('/logout',[UserController::class,'logout']);
  //show login form
  Route::post('/login',[UserController::class,'authenticate']);
- //submit form
+//submit form
 //  Route::post('/users/authenticate',[UserController::class,'authenticate']);
-//
 
 Route::get("/categories",[CategoriesController::class,'index']);
-

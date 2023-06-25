@@ -96,4 +96,11 @@ class CategoriesController extends Controller
 
         return response()->json(['message' => 'Category deleted successfully']);
     }
+
+
+    public function getAllCategories()
+    {
+        $categories = Categories::all();
+        return response()->json($categories);
+    }
 }

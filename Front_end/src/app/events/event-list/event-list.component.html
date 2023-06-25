@@ -17,7 +17,7 @@
           <div class="content">
             <a href="javascript:void(0);">{{ item.event_title }}</a>
             <p><span class="location">{{ item.event_location }}</span></p>
-            <p><span class="price">${{ item.price }}</span></p>
+            <p><span class="price">${{ item.event_price }}</span></p>
           </div>
           <div class="register">
             <button (click)="registerEvent(item)" class="register-button" *ngIf="isUser || isAdmin">Register</button>
@@ -40,22 +40,17 @@
         <form class="register-form" [formGroup]="editEventForm" (ngSubmit)="onSubmit()">
           <h2>Edit Event</h2>
 
-
-          <div class="input_box">
+          <div class="input_box  ">
             <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
             <i class="uil uil-envelope-alt field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_title'].invalid">
-            <span *ngIf="editEventForm.controls['event_title'].errors?.['required']">event_title is required.</span>
+            <span *ngIf="editEventForm.controls['event_title'].errors?.['required']">Event Title is required.</span>
           </div>
-          <div class="invalid-feedback" *ngIf="invalidEdit">
-            Part(s) of the form are invalid.
-          </div>
-
 
           <div class="input_box">
-            <input type="text" class="form-control" placeholder="Event Description" formControlName="event_description">
-            <i class="uil uil-align-left-alt field"></i>
+            <textarea class="form-control textarea_box" placeholder="Event Description" formControlName="event_description"></textarea>
+            <i class="fas fa-align-left field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_description'].invalid">
             <span *ngIf="editEventForm.controls['event_description'].errors?.['required']">Event Description is
@@ -71,11 +66,27 @@
           </div>
 
           <div class="input_box">
-            <input type="date" class="form-control" placeholder="Event Created" formControlName="event_created">
-            <i class="uil uil-calendar-alt field"></i>
+            <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
+            <i class="uil uil-location-pin-alt field"></i>
           </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_created'].invalid">
-            <span *ngIf="editEventForm.controls['event_created'].errors?.['required']">Event Created is required.</span>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_location'].invalid">
+            <span *ngIf="editEventForm.controls['event_location'].errors?.['required']">Event Location is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Price" formControlName="event_price">
+            <i class="uil uil-dollar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_price'].invalid">
+            <span *ngIf="editEventForm.controls['event_price'].errors?.['required']">Event Price is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
+            <i class="fas fa-ticket-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_ticket'].invalid">
+            <span *ngIf="editEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
           </div>
 
           <div class="input_box">
@@ -94,45 +105,16 @@
             <span *ngIf="editEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
           </div>
 
-          <div class="input_box">
-            <input type="text" class="form-control" placeholder="Event Badge" formControlName="event_badge">
-            <i class="uil uil-label-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_badge'].invalid">
-            <span *ngIf="editEventForm.controls['event_badge'].errors?.['required']">Event Badge is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
-            <i class="uil uil-ticket-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_ticket'].invalid">
-            <span *ngIf="editEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Waiting List" formControlName="waiting_list">
-            <i class="uil uil-users-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['waiting_list'].invalid">
-            <span *ngIf="editEventForm.controls['waiting_list'].errors?.['required']">Waiting List is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Event Status" formControlName="event_status">
-            <i class="uil uil-info-circle field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_status'].invalid">
-            <span *ngIf="editEventForm.controls['event_status'].errors?.['required']">Event Status is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="" formControlName="price">
-            <i class="uil uil-dollar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['price'].invalid">
-            <span *ngIf="editEventForm.controls['price'].errors?.['required']">Price is required.</span>
-          </div>
+<div class="input_box select_box">
+  <select class="form-control" formControlName="cat_id">
+    <option value="" disabled>Select Category</option>
+    <option *ngFor="let category of categories" [value]="category.cat_id">{{ category.event_title }}</option>
+  </select>
+  <i class="uil uil-folder field"></i>
+</div>
+<div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['cat_id'].invalid">
+  <span *ngIf="editEventForm.controls['cat_id'].errors?.['required']">Category is required.</span>
+</div>
 
 
           <button class="button">Edit Event</button>
