@@ -13,6 +13,7 @@ export class EventListComponent {
   url: string = "../assets/img1.jpg";
 
   public events: any = [];
+  categories: any[] = [];
   public user: any = [];
 
   role_type: any;
@@ -34,6 +35,7 @@ export class EventListComponent {
   }
 
   ngOnInit(): void {
+    this.getCategories();
     this.getEvents();
     this.role_type = localStorage.getItem('role_type');
     console.log(this.role_type);
@@ -57,20 +59,17 @@ export class EventListComponent {
   }
 
 
-  public editEventForm = new FormGroup({
-    event_title: new FormControl('', [Validators.required]),
-    event_description: new FormControl('', [Validators.required]),
-    event_image: new FormControl('', [Validators.required]),
-    event_created: new FormControl('', [Validators.required]),
-    start_date: new FormControl('', [Validators.required]),
-    end_date: new FormControl('', [Validators.required]),
-    event_badge: new FormControl('', [Validators.required]),
-    event_ticket: new FormControl('', [Validators.required]),
-    waiting_list: new FormControl('', [Validators.required]),
-    event_status: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
-    // remember_token: new FormControl('', [Validators.required]),
-  });
+public editEventForm = new FormGroup({
+  event_title: new FormControl('', [Validators.required]),
+  event_description: new FormControl('', [Validators.required]),
+  event_image: new FormControl('', [Validators.required]),
+  event_location: new FormControl('', [Validators.required]),
+  event_price: new FormControl('', [Validators.required]),
+  event_ticket: new FormControl('', [Validators.required]),
+  start_date: new FormControl('', [Validators.required]),
+  end_date: new FormControl('', [Validators.required]),
+  cat_id: new FormControl('', [Validators.required]),
+});
 
 
   fetchEventById(eventId: number) {
@@ -110,28 +109,23 @@ registerEvent(item: any): void {
     this.invalidEdit = false;
     this.submitted = true;
 
-    const data = {
-      // user_id: localStorage.getItem('user_id'),
-      event_title: this.editEventForm.controls['event_title'].value,
-      event_description: this.editEventForm.controls['event_description'].value,
-      event_image: this.editEventForm.controls['event_image'].value,
-      event_created: this.editEventForm.controls['event_created'].value,
-      start_date: this.editEventForm.controls['start_date'].value,
-      end_date: this.editEventForm.controls['end_date'].value,
-      event_badge: this.editEventForm.controls['event_badge'].value,
-      event_ticket: this.editEventForm.controls['event_ticket'].value,
-      waiting_list: this.editEventForm.controls['waiting_list'].value,
-      event_status: this.editEventForm.controls['event_status'].value,
-    price: this.editEventForm.controls['price'].value,
-      // remember_token: this.editEventForm.controls['remember_token'].value,
-
-    };
+  const data = {
+    event_title: this.editEventForm.controls['event_title'].value,
+    event_description: this.editEventForm.controls['event_description'].value,
+    event_image: this.editEventForm.controls['event_image'].value,
+    event_location: this.editEventForm.controls['event_location'].value,
+    event_price: this.editEventForm.controls['event_price'].value,
+    event_ticket: this.editEventForm.controls['event_ticket'].value,
+    start_date: this.editEventForm.controls['start_date'].value,
+    end_date: this.editEventForm.controls['end_date'].value,
+    cat_id: this.editEventForm.controls['cat_id'].value,
+  };
     console.log(data);
     // Perform the update API call
     this.auth.updateEvent(data).subscribe(
       (res: any) => {
         this.user = res.data;
-        this.router.navigate(['events/layout/eventList']);
+        this.router.navigate(['']);
 
       },
       (err: any) => {
@@ -157,6 +151,18 @@ registerEvent(item: any): void {
       (err: any) => {}
     );
   }
+getCategories() {
+  this.auth.getCategories().subscribe(
+    (res: any) => {
+      this.categories = res;
+      console.log(this.categories);
+
+      // Perform additional logic with the categories if needed
+    },
+    (err: any) => {}
+  );
+}
+
 
   del(item: any) {
     this.auth.deleteEvent(item.id).subscribe(

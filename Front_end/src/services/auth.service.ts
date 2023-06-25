@@ -24,6 +24,13 @@ export class AuthService {
   getEvents(): Observable<any> {
     return this.http.get(this.path + '/api/events');
   }
+
+getCategories(): Observable<any> {
+  const url = this.path + '/api/categories';
+  return this.http.get(url);
+}
+
+
   getEventById(eventId: number): Observable<any> {
     const url = `${this.path}/api/events/${eventId}`;
     return this.http.get(url);

@@ -440,3 +440,59 @@ form.ng-submitted input.ng-invalid {
   font-size: 12px;
   color: #E8426E;
 }
+
+.textarea_box {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+  /* font:inherit; */
+}
+
+.textarea_box:focus {
+  border-color: #fa0;
+}
+
+.input_box.select_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+.input_box.select_box select {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+  appearance: none;
+
+}
+
+.input_box.select_box select option:focus {
+  border-color: #fa0;
+}
+
+.input_box.select_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+
+.input_box.select_box i.field {
+  left: 0;
+}
+
+.input_box.select_box select:focus~i.field {
+  color: #fa0;
+}
