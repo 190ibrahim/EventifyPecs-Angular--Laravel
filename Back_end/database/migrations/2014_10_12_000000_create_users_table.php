@@ -16,27 +16,22 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) { //
             $table->id();
-            $table->string('first_name')->default('First Name');
-            $table->string('last_name') ->default('Last Name');
-            $table->string('username')->unique() ->default('Username');
-            $table->string('email')->unique() ->default('Email');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password') ->default('Password');
-            $table->string('nationality') ->default(null) ;
-            $table->integer('age')->default(0);
-            $table->date('date_of_birth')->nullable() ;
-            $table->integer('student_ID')->unique()->nullable();
-            $table->integer('contact_number')->nullable();
-            $table->string('role_type')->default('student');
-            $table->integer('confirmation_code')->nullable();
-            $table->timestamp('confirmation_time')->nullable();
-            $table->boolean('license_acceptance')->default(false);
-            $table->unsignedBigInteger('major_id')->nullable();
-            $table->rememberToken();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username');
+            $table->string('password');
+            $table->date('date_of_birth');
+            $table->string('role_type')->default('user');
+            $table->boolean('license_acceptance')->default(0);
+            $table->string('remember_token')->nullable();
             $table->timestamps();
+            $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('nationality');
+            $table->integer('confirmation_code')->nullable();
+            $table->timestamp('confirmation_time')->nullable(); //kjndf
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -44,6 +39,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users'); // kjndf     jsd=jnadfjhbadvklknvfd
+        
     }
 }
