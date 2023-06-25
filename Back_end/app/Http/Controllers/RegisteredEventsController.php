@@ -70,4 +70,11 @@ class RegisteredEventController extends Controller
             return response()->json(RegisteredEventModel::fromError('Registered event not found'), 404);
         }
     }
+
+    public function getRegistrationCount($eventId)
+    {
+        $registrationCount = RegisteredEvent::findOrFail($eventId)->registrations()->count();
+
+        return response()->json(['count' => $registrationCount]);
+    }
 }

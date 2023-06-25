@@ -142,15 +142,7 @@ registerEvent(item: any): void {
 
 
 
-  getEvents() {
-    this.auth.getEvents().subscribe(
-      (res: any) => {
-        this.events = res;
-        console.log(this.events);
-      },
-      (err: any) => {}
-    );
-  }
+
 getCategories() {
   this.auth.getCategories().subscribe(
     (res: any) => {
@@ -173,5 +165,32 @@ getCategories() {
         console.log('error in deleting');
       }
     );
+  }
+
+
+
+    getEvents() {
+    this.auth.getEvents().subscribe(
+      (res: any) => {
+        this.events = res;
+        console.log(this.events);
+        // Fetch registration count for each event
+        this.events.forEach((event: any) => {
+          this.getRegistrationCount(event.id).subscribe(
+            (count) => {
+              event.registrationCount = count; // Add registrationCount property to each event
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        });
+      },
+      (err: any) => {}
+    );
+  }
+
+  getRegistrationCount(eventId: number) {
+    return this.auth.getRegistrationCount(eventId);
   }
 }

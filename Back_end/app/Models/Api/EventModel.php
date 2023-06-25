@@ -10,7 +10,7 @@ class EventModel extends ResponseModel {
     public string $description;
     public string $startDate;
     public string $endDate;
-    public string $created;    
+    public string $created;
     public string $location;
     public string $price;
     public string $ticket;

@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   innerWidth: any;
   formOpenBtn: any;
 
+  public events: any = [];
+  public eventsCount: number = 0;
 
   public user: any = [];
   public submitted: boolean = false;
@@ -22,6 +24,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
+    this.getEvents();
+    this.updateEventCount();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -90,7 +94,47 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  getEvents() {
+    this.auth.getEvents().subscribe(
+      (res: any) => {
+        this.events = res;
+        console.log(this.events);
+      },
+      (err: any) => {}
+    );
+  }
 
+
+  getStatusClass(item: any): string {
+  const currentDate = new Date();
+  const startDate = new Date(item.start_date);
+  const endDate = new Date(item.end_date);
+
+  if (currentDate > endDate) {
+    return 'completed';
+  } else if (currentDate < startDate) {
+    return 'pending';
+  } else {
+    return 'process';
+  }
+}
+
+getStatusText(item: any): string {
+  const currentDate = new Date();
+  const startDate = new Date(item.start_date);
+  const endDate = new Date(item.end_date);
+
+  if (currentDate > endDate) {
+    return 'Completed';
+  } else if (currentDate < startDate) {
+    return 'Pending';
+  } else {
+    return 'Process';
+  }
+}
+updateEventCount(): void {
+  this.eventsCount = this.events.length;
+}
 }
 
 

@@ -24,6 +24,7 @@ Route::post('/events', [EventsController::class, 'store']);
 Route::get('/events', [EventsController::class, 'index']);
 Route::get('/reg_events', [EventsController::class, 'eventsCalendar']);
 Route::post('/registerEvent', [EventsController::class, 'registerEvent']);
+Route::post('/registerEvent/{id}', [EventsController::class, 'getRegistrationCount']);
 
 // Get a specific event
 Route::get('/events/{id}', [EventsController::class, 'show']);

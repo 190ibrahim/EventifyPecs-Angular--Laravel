@@ -25,10 +25,7 @@ export class AuthService {
     return this.http.get(this.path + '/api/events');
   }
 
-getCategories(): Observable<any> {
-  const url = this.path + '/api/categories';
-  return this.http.get(url);
-}
+
 
 
   getEventById(eventId: number): Observable<any> {
@@ -64,5 +61,15 @@ registerEvent(user_id: number, event_id: number): Observable<any> {
   return this.http.post(url, payload);
 }
 
+
+
+getCategories(): Observable<any> {
+  const url = `${this.path}/api/categories`;
+  return this.http.get(url);
+}
+
+  getRegistrationCount(eventId: number) {
+    return this.http.get<number>(`${this.path}/api/registerEvent/${eventId}`);
+  }
 
 }

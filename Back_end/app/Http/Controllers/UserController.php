@@ -44,11 +44,11 @@ class UserController extends Controller
     //     // ]);
 
 
-        
 
 
 
-        
+
+
     //     // $user=User::create([
     //     //     'first_name'=>$formFields['firstname'],
     //     //     'last_name'=>$formFields['lastname'],
@@ -84,7 +84,7 @@ class UserController extends Controller
     //     ]);
 
     //     return response()->json(['message' => 'Your account has been created'], 201);
-    
+
     // }
 
 
@@ -96,29 +96,29 @@ class UserController extends Controller
         'username' => ['required'],
         'password' => ['required'],
         'date_of_birth'=>['required'],
-        'role_type' => ['required'], // Add role field
-        'license_acceptance' => ['required'], // Add role field
-        'remember_token' => ['required'], // Add role field
-=        'email' => ['required', 'email', Rule::unique('users', 'email')],
+        // 'role_type' => ['required'], // Add role field
+        // 'license_acceptance' => ['required'], // Add role field
+        // 'remember_token' => ['required'], // Add role field
+        'email' => ['required', 'email', Rule::unique('users', 'email')],
         'nationality' => ['required']
      ]);
-    
+
     $user = User::create([
         'first_name' => $formFields['firstname'],
         'last_name' => $formFields['lastname'],
         'username' => $formFields['username'],
         'password' => Hash::make($formFields['password']),
         'date_of_birth' => $formFields['date_of_birth'],
-        'role_type' => $formFields['role_type'], // Save the role in the database
-        'license_acceptance' => $formFields['license_acceptance'], // Add role field
-        'remember_token' => $formFields['remember_token'], // Add role field
+        // 'role_type' => $formFields['role_type'], // Save the role in the database
+        // 'license_acceptance' => $formFields['license_acceptance'], // Add role field
+        // 'remember_token' => $formFields['remember_token'], // Add role field
         'email' => $formFields['email'],
         'nationality' => $formFields['nationality'],
-        
+
     ]);
 
     return response()->json([
-        'message' => 'Your account has been created', 
+        'message' => 'Your account has been created',
         'user'=>$user,
     ], 201);
 }
@@ -175,7 +175,7 @@ class UserController extends Controller
 
 //     //     return redirect('/')->with('success','You have been logged in');
 //     // }
-     
+
 //     // return back()->withErrors([
 //     //     'email'=>'The provided credentials do not match our records'
 //     // ])->onlyInput('email');
@@ -223,7 +223,7 @@ public function authenticate(Request $request)
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return response()->json(['message' => 'You have been logged out']);
     }
 
@@ -236,5 +236,5 @@ public function authenticate(Request $request)
 
 
 
-    
+
 }

@@ -17,7 +17,7 @@
       <li>
         <i class='bx bxs-calendar-check'></i>
         <span class="text">
-          <h3>1020</h3>
+          <h3>{{ events.length }}</h3>
           <p>Events</p>
         </span>
       </li>
@@ -48,53 +48,24 @@
         <table>
           <thead>
             <tr>
-              <th>User</th>
+              <th>title</th>
               <th>Date</th>
               <th>Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let item of events">
             <tr>
               <td>
                 <img src="../../assets/sidenav/user3.jpg">
-                <p>John Doe</p>
+                <p>{{ item.event_title }}</p>
               </td>
-              <td>01-10-2021</td>
-              <td><span class="status completed">Completed</span></td>
-            </tr>
-            <tr>
+              <td>{{ item.start_date }}</td>
               <td>
-                <img src="../../assets/sidenav/user3.jpg">
-                <p>John Doe</p>
+                <span class="status" [ngClass]="getStatusClass(item)">{{ getStatusText(item) }}</span>
               </td>
-              <td>01-10-2021</td>
-              <td><span class="status pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="../../assets/sidenav/user3.jpg">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2021</td>
-              <td><span class="status process">Process</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="../../assets/sidenav/user3.jpg">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2021</td>
-              <td><span class="status pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="../../assets/sidenav/user3.jpg">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2021</td>
-              <td><span class="status completed">Completed</span></td>
             </tr>
           </tbody>
+
         </table>
       </div>
       <div class="todo">
@@ -247,7 +218,7 @@
           </div>
 
           <div class="input_box">
-            <input type="date" class="form-control" placeholder="Start Date" formControlName="start_date">
+            <input type="datetime-local" class="form-control" placeholder="Start Date" formControlName="start_date">
             <i class="uil uil-calendar-alt field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_date'].invalid">
@@ -255,20 +226,13 @@
           </div>
 
           <div class="input_box">
-            <input type="date" class="form-control" placeholder="End Date" formControlName="end_date">
+            <input type="datetime-local" class="form-control" placeholder="End Date" formControlName="end_date">
             <i class="uil uil-calendar-alt field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_date'].invalid">
             <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
           </div>
 
-          <div class="input_box">
-            <input type="date" class="form-control" placeholder="Event Created" formControlName="event_created">
-            <i class="uil uil-calendar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_created'].invalid">
-            <span *ngIf="createEventForm.controls['event_created'].errors?.['required']">Event Created is required.</span>
-          </div>
 
           <div class="input_box">
             <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
@@ -295,7 +259,7 @@
           </div>
 
           <div class="input_box">
-            <input type="date" class="form-control" placeholder="Start Sale" formControlName="start_sale">
+            <input type="datetime-local" class="form-control" placeholder="Start Sale" formControlName="start_sale">
             <i class="uil uil-calendar-alt field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_sale'].invalid">
@@ -303,7 +267,7 @@
           </div>
 
           <div class="input_box">
-            <input type="date" class="form-control" placeholder="End Sale" formControlName="end_sale">
+            <input type="datetime-local" class="form-control" placeholder="End Sale" formControlName="end_sale">
             <i class="uil uil-calendar-alt field"></i>
           </div>
           <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_sale'].invalid">

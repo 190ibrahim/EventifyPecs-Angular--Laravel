@@ -122,9 +122,8 @@ export class HeaderComponent implements OnInit {
       confirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
       fname: new FormControl('', [Validators.required]),
       lname: new FormControl('', [Validators.required]),
-      age: new FormControl( '', [Validators.required]),
+      date_of_birth: new FormControl( '', [Validators.required]),
       nationality: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required])
   }, { validators: passwordValidator('password', 'confirm') });
 
   public onSubmit() {
@@ -167,9 +166,8 @@ export class HeaderComponent implements OnInit {
         password: this.registerForm.controls['password'].value ,
         firstname: this.registerForm.controls['fname'].value ,
         lastname: this.registerForm.controls['lname'].value,
-        age: this.registerForm.controls['age'].value,
+        date_of_birth: this.registerForm.controls['date_of_birth'].value,
         nationality: this.registerForm.controls['nationality'].value,
-        role_type: this.registerForm.controls['role'].value,
 
       };
 
@@ -179,8 +177,7 @@ export class HeaderComponent implements OnInit {
         localStorage.clear();
         localStorage.setItem('user_id', this.user.id);
         localStorage.setItem('username', this.user.first_name);
-                  localStorage.setItem('role_type', this.user.role_type);
-
+        localStorage.setItem('role_type', 'user');
         this.router.navigate(['']);
                   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             window.location.reload();
