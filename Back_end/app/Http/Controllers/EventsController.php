@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-   
+
 
 
 
@@ -38,30 +38,19 @@ use Illuminate\Support\Facades\DB;
     public function registerEvent(Request $request){
 
         $validator = Validator::make($request->all(), [
-        'event_title' => 'required',
-        'event_description' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required',
-        'event_created' => 'required',
-        'event_location' => 'required',
-        'event_price' => 'required',
-        'event_ticket' => 'required',
-        'start_sale' => 'required',
-        'end_sale' => 'required',
-        'cat_id' => 'required',
-        
+
         ]);
-        
+
         if ($validator->fails()) {
         return response()->json($validator->errors()->toJson(), 400);
         }
-        
-        
+
+
         // Insert the event data into the `registered_events` table using DB
         DB::table('registered_events')->insert($request->all());
-        
+
         return response()->json(['message' => 'Event registered successfully'], 200);
-        
+
         }
 
 

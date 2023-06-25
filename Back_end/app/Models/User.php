@@ -22,7 +22,7 @@ class User extends Authenticatable
             'last_name',
             'username',
             'password',
-            'date_of_birth'
+            'date_of_birth',
             'role_type',
             'license_acceptance',
             'remember_token',

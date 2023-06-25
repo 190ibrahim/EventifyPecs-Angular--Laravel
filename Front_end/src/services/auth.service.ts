@@ -46,11 +46,16 @@ export class AuthService {
     return this.http.get<Event[]>(url);
   }
 
-  registerEvent(event: any): Observable<any> {
-    const url = `${this.path}/api/registerEvent`;
+registerEvent(user_id: number, event_id: number): Observable<any> {
+  const url = `${this.path}/api/registerEvent`;
 
-    return this.http.post(url, event);
-  }
+  const payload = {
+    user_id: user_id,
+    event_id: event_id
+  };
 
-  
+  return this.http.post(url, payload);
+}
+
+
 }
