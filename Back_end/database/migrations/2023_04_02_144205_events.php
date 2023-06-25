@@ -18,7 +18,7 @@ class Events extends Migration
             $table->string('event_title');
             $table->text('event_description');
             $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->timestamp('end_date')->nullable();
             $table->timestamp('event_created')->useCurrent();
             $table->string('event_location');
             $table->decimal('event_price', 11, 2);
@@ -29,13 +29,6 @@ class Events extends Migration
             $table->timestamps();
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade'); //foreign key
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('events');
-    }
-       
     }
 
     /**
