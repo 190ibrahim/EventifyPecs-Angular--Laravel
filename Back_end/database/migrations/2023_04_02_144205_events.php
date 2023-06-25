@@ -31,19 +31,12 @@ class Events extends Migration
         });
     }
 
-    public function down()
-    {
-        Schema::dropIfExists('events');
-    }
-       
-    }
-
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
+    public function down() //drop table
     {
         Schema::dropIfExists('events');
     }
