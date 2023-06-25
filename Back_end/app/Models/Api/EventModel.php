@@ -43,4 +43,4 @@ class EventModel extends ResponseModel {
         return $viewEvent;
     }
 }
-php artisan make:controller CategoriesController --api
+// php artisan make:controller CategoriesController --api

@@ -195,7 +195,10 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['']);
           this.isUserLoggedin = false;
-
+        this.router.navigate(['']);
+                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            window.location.reload();
+          });
   }
 }
 

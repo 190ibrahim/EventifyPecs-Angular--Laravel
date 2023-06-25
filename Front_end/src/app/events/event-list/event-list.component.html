@@ -58,14 +58,6 @@
           </div>
 
           <div class="input_box">
-            <input type="text" class="form-control" placeholder="Event Image URL" formControlName="event_image">
-            <i class="uil uil-image field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_image'].invalid">
-            <span *ngIf="editEventForm.controls['event_image'].errors?.['required']">Event Image is required.</span>
-          </div>
-
-          <div class="input_box">
             <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
             <i class="uil uil-location-pin-alt field"></i>
           </div>
@@ -105,16 +97,7 @@
             <span *ngIf="editEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
           </div>
 
-          <div class="input_box select_box">
-            <select class="form-control" formControlName="cat_id">
-              <option value="" disabled>Select Category</option>
-              <option *ngFor="let category of categories" [value]="category.id">{{ category.category_name }}</option>
-            </select>
-            <i class="uil uil-folder field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['cat_id'].invalid">
-            <span *ngIf="editEventForm.controls['cat_id'].errors?.['required']">Category is required.</span>
-          </div>
+
 
           <button class="button">Edit Event</button>
         </form>

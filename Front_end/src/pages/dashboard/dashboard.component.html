@@ -189,104 +189,86 @@
     </div>
   </main>
   <section class="home">
-    <div class="form_container">
-      <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
+  <div class="form_container">
+    <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
 
-      <div class="form">
-        <form class="register-form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
-          <h2>Craete Event</h2>
+    <div class="form">
+      <form class="register-form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+        <h2>Create Event</h2>
 
+        <div class="input_box">
+          <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
+          <i class="uil uil-envelope-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_title'].invalid">
+          <span *ngIf="createEventForm.controls['event_title'].errors?.['required']">Event Title is required.</span>
+        </div>
 
-          <div class="input_box">
-            <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
-            <i class="uil uil-envelope-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_title'].invalid">
-            <span *ngIf="createEventForm.controls['event_title'].errors?.['required']">Event Title is required.</span>
-          </div>
-          <div class="invalid-feedback" *ngIf="invalidCreate">
-            Part(s) of the form are invalid.
-          </div>
-
-          <div class="input_box">
-            <textarea class="form-control textarea_box" placeholder="Event Description"
-              formControlName="event_description"></textarea>
-            <i class="uil uil-align-left-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_description'].invalid">
-            <span *ngIf="createEventForm.controls['event_description'].errors?.['required']">Event Description is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="datetime-local" class="form-control" placeholder="Start Date" formControlName="start_date">
-            <i class="uil uil-calendar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_date'].invalid">
-            <span *ngIf="createEventForm.controls['start_date'].errors?.['required']">Start Date is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="datetime-local" class="form-control" placeholder="End Date" formControlName="end_date">
-            <i class="uil uil-calendar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_date'].invalid">
-            <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
-          </div>
+        <div class="input_box">
+          <textarea class="form-control textarea_box" placeholder="Event Description"
+            formControlName="event_description"></textarea>
+          <i class="uil uil-align-left-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_description'].invalid">
+          <span *ngIf="createEventForm.controls['event_description'].errors?.['required']">Event Description is
+            required.</span>
+        </div>
 
 
-          <div class="input_box">
-            <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
-            <i class="uil uil-location-point field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_location'].invalid">
-            <span *ngIf="createEventForm.controls['event_location'].errors?.['required']">Event Location is required.</span>
-          </div>
 
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Event Price" formControlName="event_price">
-            <i class="uil uil-dollar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_price'].invalid">
-            <span *ngIf="createEventForm.controls['event_price'].errors?.['required']">Event Price is required.</span>
-          </div>
+        <div class="input_box">
+          <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
+          <i class="uil uil-location-point field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_location'].invalid">
+          <span *ngIf="createEventForm.controls['event_location'].errors?.['required']">Event Location is required.</span>
+        </div>
 
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
-            <i class="uil uil-ticket-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_ticket'].invalid">
-            <span *ngIf="createEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
-          </div>
+        <div class="input_box">
+          <input type="number" class="form-control" placeholder="Event Price" formControlName="event_price">
+          <i class="uil uil-dollar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_price'].invalid">
+          <span *ngIf="createEventForm.controls['event_price'].errors?.['required']">Event Price is required.</span>
+        </div>
 
-          <div class="input_box">
-            <input type="datetime-local" class="form-control" placeholder="Start Sale" formControlName="start_sale">
-            <i class="uil uil-calendar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_sale'].invalid">
-            <span *ngIf="createEventForm.controls['start_sale'].errors?.['required']">Start Sale is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="datetime-local" class="form-control" placeholder="End Sale" formControlName="end_sale">
-            <i class="uil uil-calendar-alt field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_sale'].invalid">
-            <span *ngIf="createEventForm.controls['end_sale'].errors?.['required']">End Sale is required.</span>
-          </div>
-
-          <div class="input_box">
-            <input type="number" class="form-control" placeholder="Category ID" formControlName="cat_id">
-            <i class="uil uil-folder field"></i>
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['cat_id'].invalid">
-            <span *ngIf="createEventForm.controls['cat_id'].errors?.['required']">Category ID is required.</span>
-          </div>
+        <div class="input_box">
+          <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
+          <i class="uil uil-ticket-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_ticket'].invalid">
+          <span *ngIf="createEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
+        </div>
 
 
-          <button class="button">Create Event</button>
-        </form>
-      </div>
+        <div class="input_box">
+          <input type="datetime-local" class="form-control" placeholder="Start Date" formControlName="start_date">
+          <i class="uil uil-calendar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_date'].invalid">
+          <span *ngIf="createEventForm.controls['start_date'].errors?.['required']">Start Date is required.</span>
+        </div>
+
+        <div class="input_box">
+          <input type="datetime-local" class="form-control" placeholder="End Date" formControlName="end_date">
+          <i class="uil uil-calendar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_date'].invalid">
+          <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
+        </div>
+
+        <div class="input_box">
+          <input type="number" class="form-control" placeholder="Category ID" formControlName="cat_id">
+          <i class="uil uil-folder field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['cat_id'].invalid">
+          <span *ngIf="createEventForm.controls['cat_id'].errors?.['required']">Category ID is required.</span>
+        </div>
+
+        <button class="button">Create Event</button>
+      </form>
     </div>
+  </div>
   </section>
   <!-- MAIN -->
 </section>

@@ -1,28 +1,44 @@
 <?php
+// namespace App\Http\Controllers;
+
+// use App\Models\Categories;
+// use Illuminate\Http\Request;
+
+
+
+
+
+
+
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
+/**
+ * Class CategoriesController
+ *
+ * @package App\Http\Controllers
+ */
 class CategoriesController extends Controller
 {
     /**
-     * Display a listing of the categories.
+     * Retrieves and returns all categories from the database.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
         $categories = Categories::all();
 
-        return response()->json($categories);
+        return response()->json(['categories' => $categories], Response::HTTP_OK);
     }
 
     /**
-     * Store a newly created category in storage.
+     * Validates the request and creates a new category.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -38,10 +54,10 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Display the specified category.
+     * Retrieves and returns a specific category by id.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Category id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -55,11 +71,11 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Update the specified category in storage.
+     * Validates the request and updates a specific category by id.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Category id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -79,10 +95,10 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Remove the specified category from storage.
+     * Deletes a specific category by id.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Category id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
@@ -95,12 +111,5 @@ class CategoriesController extends Controller
         $category->delete();
 
         return response()->json(['message' => 'Category deleted successfully']);
-    }
-
-
-    public function getAllCategories()
-    {
-        $categories = Categories::all();
-        return response()->json($categories);
     }
 }

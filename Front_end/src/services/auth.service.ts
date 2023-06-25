@@ -64,7 +64,7 @@ registerEvent(user_id: number, event_id: number): Observable<any> {
 
 
 getCategories(): Observable<any> {
-  const url = `${this.path}/api/categories`;
+  const url = this.path + '/api/categories';
   return this.http.get(url);
 }
 

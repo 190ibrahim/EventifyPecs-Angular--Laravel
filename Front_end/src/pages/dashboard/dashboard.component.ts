@@ -55,12 +55,9 @@ export class DashboardComponent implements OnInit {
     event_description: new FormControl('', [Validators.required]),
     start_date: new FormControl('', [Validators.required]),
     end_date: new FormControl('', [Validators.required]),
-    event_created: new FormControl('', [Validators.required]),
     event_location: new FormControl('', [Validators.required]),
     event_price: new FormControl('', [Validators.required]),
     event_ticket: new FormControl('', [Validators.required]),
-    start_sale: new FormControl('', [Validators.required]),
-    end_sale: new FormControl('', [Validators.required]),
     cat_id: new FormControl('', [Validators.required]),
   });
 
@@ -68,18 +65,21 @@ export class DashboardComponent implements OnInit {
       this.invalidCreate = false;
       this.submitted = true;
 
-      const data = {
-        // user_id: localStorage.getItem('user_id'),
-        event_title: this.createEventForm.controls['event_title'].value,
-        event_description: this.createEventForm.controls['event_description'].value,
-        event_created: this.createEventForm.controls['event_created'].value,
-        start_date: this.createEventForm.controls['start_date'].value,
-        end_date: this.createEventForm.controls['end_date'].value,
-        event_ticket: this.createEventForm.controls['event_ticket'].value,
+const data = {
+  event_title: this.createEventForm.controls['event_title'].value,
+  event_description: this.createEventForm.controls['event_description'].value,
+  // event_image: this.createEventForm.controls['event_image'].value,
+  event_location: this.createEventForm.controls['event_location'].value,
+  event_price: this.createEventForm.controls['event_price'].value,
+  event_ticket: this.createEventForm.controls['event_ticket'].value,
+  start_date: this.createEventForm.controls['start_date'].value,
+  end_date: this.createEventForm.controls['end_date'].value,
+  cat_id: this.createEventForm.controls['cat_id'].value
+};
 
-        // remember_token: this.createEventForm.controls['remember_token'].value,
+// You can then use the `data` object to perform your desired actions, such as updating the event.
 
-      };
+
 
     this.auth.createEvent(data).subscribe(
       (res: any) => {

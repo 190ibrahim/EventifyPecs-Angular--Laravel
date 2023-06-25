@@ -64,13 +64,13 @@ use Illuminate\Support\Facades\DB;
             'event_description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'event_created' => 'required',
+            // 'event_created' => 'required',
             'event_location' => 'required',
             'event_price' => 'required',
             'event_ticket' => 'required',
-            'start_sale' => 'required',
-            'end_sale' => 'required',
-            'cat_id' => 'required'
+            // 'start_sale' => 'required',
+            // 'end_sale' => 'required',
+            // 'cat_id' => 'required'
                  ]);
 
         $event = Event::create($data);
@@ -95,13 +95,13 @@ use Illuminate\Support\Facades\DB;
             'event_description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'event_created' => 'required',
+            // 'event_created' => 'required',
             'event_location' => 'required',
             'event_price' => 'required',
             'event_ticket' => 'required',
-            'start_sale' => 'required',
-            'end_sale' => 'required',
-            'cat_id' => 'required'
+            // 'start_sale' => 'required',
+            // 'end_sale' => 'required',
+            // 'cat_id' => 'required'
         ]);
 
         $event = DB::table('events')->where('id', $id)->update($data);

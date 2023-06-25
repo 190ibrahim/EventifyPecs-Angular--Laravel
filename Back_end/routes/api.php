@@ -25,8 +25,6 @@ Route::get('/events', [EventsController::class, 'index']);
 Route::get('/reg_events', [EventsController::class, 'eventsCalendar']);
 Route::post('/registerEvent', [EventsController::class, 'registerEvent']);
 
-Route::post('/registerEvent/{id}', [EventsController::class, 'getRegistrationCount']);
-
 // Get a specific event
 Route::get('/events/{id}', [EventsController::class, 'show']);
 // Update an event
@@ -44,7 +42,16 @@ Route::post('/register',[UserController::class,'store']);
  Route::get('/logout',[UserController::class,'logout']);
  //show login form
  Route::post('/login',[UserController::class,'authenticate']);
-//submit form
+ //submit form
 //  Route::post('/users/authenticate',[UserController::class,'authenticate']);
+//
 
-Route::get("/categories",[CategoriesController::class,'index']);
+
+
+// get all categories
+Route::get('/categories', [CategoriesController::class, 'index']);
+
+// get all registrations
+Route::get('/registeredEvents', [RegisteredEventsController::class, 'getAllRegistrations']);
+// get all registrations count
+Route::get('/registeredEvents/count', [RegisteredEventsController::class, 'count']);
