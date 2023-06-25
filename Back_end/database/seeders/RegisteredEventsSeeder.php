@@ -13,6 +13,6 @@ class RegisteredEventsSeeder extends Seeder
      */
     public function run()
     {
-        //
+                \App\Models\RegisteredEvents::factory(10)->create();
     }
 }

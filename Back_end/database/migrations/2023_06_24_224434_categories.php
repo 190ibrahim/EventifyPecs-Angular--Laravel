@@ -13,8 +13,14 @@ class Categories extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('cat_title');
+            $table->timestamps(); 
+        });
     }
+
+
 
     /**
      * Reverse the migrations.
@@ -23,6 +29,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categories');
     }
 }

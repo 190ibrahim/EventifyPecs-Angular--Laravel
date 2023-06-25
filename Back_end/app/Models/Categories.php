@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categories extends Model
 {
-    use HasFactory;
+
+    protected $fillable = [
+        'cat_title'
+    ];
+
+
+    public function category(): BelongsTo
+{
+    return $this->belongsTo(Categories::class, 'cat_id');
+}
+
+
+public function events(): HasMany
+{
+    return $this->hasMany(Event::class);
+}
 }

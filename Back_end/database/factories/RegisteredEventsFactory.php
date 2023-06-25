@@ -14,7 +14,12 @@ class RegisteredEventsFactory extends Factory
     public function definition()
     {
         return [
-            //
+                
+                    'user_id' => $this -> faker -> numberBetween(1, 10),
+                    'event_id' => $this -> faker -> numberBetween(1, 10),
+                    'is_attended' => $this -> faker -> numberBetween(0, 1),
         ];
     }
 }
+
+php artisan make:seeder RegisteredEventsSeeder

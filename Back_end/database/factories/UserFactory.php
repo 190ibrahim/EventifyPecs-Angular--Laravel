@@ -12,25 +12,37 @@ class UserFactory extends Factory
      *
      * @return array
      */
+
+     $table->id();
+     $table->string('first_name');
+     $table->string('last_name');
+     $table->string('username');
+     $table->string('password');
+     $table->date('date_of_birth');
+     $table->string('role_type')->default('user');
+     $table->boolean('license_acceptance')->default(0);
+     $table->string('remember_token')->nullable();
+     $table->timestamps();
+     $table->string('email');
+     $table->timestamp('email_verified_at')->nullable();
+     $table->string('nationality');
+     $table->integer('confirmation_code')->nullable();
+     $table->timestamp('confirmation_time')->nullable();
     public function definition()
     {
         return [
             'first_name' =>$this -> faker -> firstName(),
             'last_name' => $this -> faker -> lastName(),
             'username' => $this -> faker -> unique() -> userName(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'date_of_birth' => $this -> faker -> date(),
+            'role_type' => $this -> faker -> randomElement(['user', 'admin']),
+            'license_acceptance' => false
+            'remember_token' => Str::random(10),
+
             'email' => $this -> faker -> unique() -> safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'nationality' =>$this -> faker -> country(),
-            'age' => $this -> faker -> numberBetween(18, 100),
-            'date_of_birth' => $this -> faker -> date(),
-            'student_ID' => $this -> faker -> numberBetween(1000000, 9999999),
-            'contact_number' => $this -> faker -> numberBetween(1000000, 9999999),
-            'role_type' => $this -> faker -> randomElement(['student', 'admin']),
-            'major_id' => $this -> faker -> numberBetween(1, 5),
-            'remember_token' => Str::random(10),
-            'license_acceptance' => false
-        ];
+            'nationality' =>$this -> faker -> country(),        ];
     }
 
     /**

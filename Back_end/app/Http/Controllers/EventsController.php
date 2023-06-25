@@ -17,14 +17,22 @@ use Illuminate\Support\Facades\DB;
 
     public function eventsCalendar()
     {
-        $events = DB::table('reg_events')->get();
-        $events =  DB::table('reg_events')
-        ->join('users', 'reg_events.user_id', '=', 'users.id')
-        ->select('reg_events.*', 'users.*')
+        $events = DB::table('registered_events')->get();
+        $events =  DB::table('registered_events')
+        ->join('users', 'registered_events.user_id', '=', 'users.id')
+        ->select('registered_events.*', 'users.*')
         ->get();
 
         return response()->json(['message' => 'Event registered successfully', 'events' => $events], 201);
     }
+
+
+
+   
+
+
+
+
 
 
     public function registerEvent(Request $request){
@@ -34,7 +42,13 @@ use Illuminate\Support\Facades\DB;
         'event_description' => 'required',
         'start_date' => 'required',
         'end_date' => 'required',
-        'user_id' => 'required',
+        'event_created' => 'required',
+        'event_location' => 'required',
+        'event_price' => 'required',
+        'event_ticket' => 'required',
+        'start_sale' => 'required',
+        'end_sale' => 'required',
+        'cat_id' => 'required',
         
         ]);
         
@@ -43,27 +57,32 @@ use Illuminate\Support\Facades\DB;
         }
         
         
-        // Insert the event data into the `reg_events` table using DB
-        DB::table('reg_events')->insert($request->all());
+        // Insert the event data into the `registered_events` table using DB
+        DB::table('registered_events')->insert($request->all());
         
         return response()->json(['message' => 'Event registered successfully'], 200);
         
         }
+
+
+
+
+
     public function store(Request $request)
     {
         $data = $request->validate([
             'event_title' => 'required',
             'event_description' => 'required',
-            'event_image' => 'required',
-            'event_created' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'event_badge' => 'required',
+            'event_created' => 'required',
+            'event_location' => 'required',
+            'event_price' => 'required',
             'event_ticket' => 'required',
-            'waiting_list' => 'required',
-            'event_status' => 'required',
-            'price' => 'required',
-         ]);
+            'start_sale' => 'required',
+            'end_sale' => 'required',
+            'cat_id' => 'required'
+                 ]);
 
         $event = Event::create($data);
         return response()->json(['id' => $event->id], 201);
@@ -75,20 +94,25 @@ use Illuminate\Support\Facades\DB;
         return response()->json($event);
     }
 
+
+
+
+
+
     public function update(Request $request, $id)
     {
         $data = $request->validate([
             'event_title' => 'required',
             'event_description' => 'required',
-            'event_image' => 'required',
-            'event_created' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'event_badge' => 'required',
+            'event_created' => 'required',
+            'event_location' => 'required',
+            'event_price' => 'required',
             'event_ticket' => 'required',
-            'waiting_list' => 'required',
-            'event_status' => 'required',
-            'price' => 'required',
+            'start_sale' => 'required',
+            'end_sale' => 'required',
+            'cat_id' => 'required'
         ]);
 
         $event = DB::table('events')->where('id', $id)->update($data);

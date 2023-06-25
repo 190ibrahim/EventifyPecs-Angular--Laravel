@@ -21,19 +21,15 @@ class User extends Authenticatable
             'first_name',
             'last_name',
             'username',
+            'password',
+            'date_of_birth'
+            'role_type',
+            'license_acceptance',
+            'remember_token',
             'email',
             'email_verified_at',
-            'password',
             'nationality',
-            'age',
-            'date_of_birth',
-            'student_ID',
-            'contact_number',
-            'role_type',
             'confirmation_code',
-            'confirmation_time',
-            'license_acceptance',
-            'major_id'
             ];
     /**
      * The attributes that should be hidden for serialization.
@@ -57,9 +53,6 @@ class User extends Authenticatable
         'date_of_birth' => 'datetime',
         'confirmation_time' => 'datetime',
 
-        'age' => 'integer',
-        'student_ID' => 'integer',
-        'major_id' => 'integer',
         'confirmation_code' => 'integer',
         'license_acceptance' => 'boolean',
 

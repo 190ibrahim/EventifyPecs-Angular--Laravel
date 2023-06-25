@@ -94,22 +94,27 @@ class UserController extends Controller
         'firstname' => ['required'],
         'lastname' => ['required'],
         'username' => ['required'],
-        'email' => ['required', 'email', Rule::unique('users', 'email')],
-        'password' => 'required',
-        'age' => ['required'],
-        'nationality' => ['required'],
+        'password' => ['required'],
+        'date_of_birth'=>['required'],
         'role_type' => ['required'] // Add role field
-    ]);
+        'license_acceptance' => ['required'] // Add role field
+        'remember_token' => ['required'] // Add role field
+=        'email' => ['required', 'email', Rule::unique('users', 'email')],
+        'nationality' => ['required'],
+     ]);
     
     $user = User::create([
         'first_name' => $formFields['firstname'],
         'last_name' => $formFields['lastname'],
         'username' => $formFields['username'],
-        'email' => $formFields['email'],
         'password' => Hash::make($formFields['password']),
-        'age' => $formFields['age'],
+        'date_of_birth' => $formFields['date_of_birth'],
+        'role_type' => $formFields['role_type'], // Save the role in the database
+        'license_acceptance' => $formFields['license_acceptance'], // Add role field
+        'remember_token' => $formFields['remember_token'], // Add role field
+        'email' => $formFields['email'],
         'nationality' => $formFields['nationality'],
-        'role_type' => $formFields['role_type'] // Save the role in the database
+        
     ]);
 
     return response()->json([

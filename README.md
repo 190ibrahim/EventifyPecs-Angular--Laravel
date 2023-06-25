@@ -62,3 +62,31 @@ Follow these steps to install and run this project on your local machine:
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+1) first check which branch you are working on: git branch
+ you should be in the main
+2) then: git pull 
+
+3) then create a branch: git checkout -b <branchName>
+NOw you can start working on this branch
+After you did something, now staging and commiting
+4) git add .
+5) git commit -m ""
+
+
+Now push so we can see what you have done.
+6) git push -u origin <branchName>
+
+Now we can see the work you did.
+We will review it,you have to wait. if it is good, then make sure that in the same stage with the main, so
+7) git checkout main
+8) git pull
+Now go back to your branch 
+9) git checkout <branchName>
+10) git rebase main
+if there is a conflict solve it, then 11) git rebase --continue
+11) git checkout main
+12) git merge <branchName>
+13) git push
+to delete the branch
+14) git branch -d <branchName> 
+That's it

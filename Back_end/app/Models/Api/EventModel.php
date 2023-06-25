@@ -8,29 +8,28 @@ use App\Models\Event;
 class EventModel extends ResponseModel {
     public string $title;
     public string $description;
-    public string $image;
-    public string $created;
     public string $startDate;
     public string $endDate;
-    public string $status;
-    public string $badge;
+    public string $created;    
+    public string $location;
+    public string $price;
     public string $ticket;
-    public bool $waitingList;
-    public int $userId;
+    public string $startSale;
+    public string $endSale;
+    public int $catId;
 
     public static function fromEvent(Event $event) : EventModel {
         $viewEvent = new EventModel();
         $viewEvent->title = $event->event_title;
         $viewEvent->description = $event->event_description;
-        $viewEvent->image = $event->event_image;
-        $viewEvent->created = $event->event_created;
         $viewEvent->startDate = $event->start_date;
         $viewEvent->endDate = $event->end_date;
-        $viewEvent->status = $event->event_status;
-        $viewEvent->badge = $event->event_badge;
+        $viewEvent->created = $event->event_created;
+        $viewEvent->location = $event->event_location;
         $viewEvent->ticket = $event->event_ticket;
-        $viewEvent->waitingList = $event->waiting_list;
-        $viewEvent->userId = $event->user_id;
+        $viewEvent->startSale = $event->start_sale;
+        $viewEvent->endSale = $event->end_sale;
+        $viewEvent->catId = $event->cat_id;
 
         $viewEvent->success();
 
@@ -44,3 +43,4 @@ class EventModel extends ResponseModel {
         return $viewEvent;
     }
 }
+php artisan make:controller CategoriesController --api

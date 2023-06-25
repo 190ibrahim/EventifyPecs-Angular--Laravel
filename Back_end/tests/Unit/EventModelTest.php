@@ -24,6 +24,7 @@ class EventModelTest extends TestCase
             'event_badge' => 'badge.jpg',
             'event_ticket' => 'ticket.jpg',
             'waiting_list' => true,
+            'price' => 0.00,
             'user_id' => 1
         ]);
 
@@ -42,6 +43,7 @@ class EventModelTest extends TestCase
         $this->assertEquals('badge.jpg', $eventResponseModel->badge);
         $this->assertEquals('ticket.jpg', $eventResponseModel->ticket);
         $this->assertEquals(true, $eventResponseModel->waitingList);
+        $this->assertEquals(0.00, $eventResponseModel->price);
         $this->assertEquals(1, $eventResponseModel->userId);
         $this->assertEquals(ResponseState::Success, $eventResponseModel->state);
     }
@@ -66,6 +68,7 @@ class EventModelTest extends TestCase
         $this->assertFalse(isset($eventResponseModel->badge));
         $this->assertFalse(isset($eventResponseModel->ticket));
         $this->assertFalse(isset($eventResponseModel->waitingList));
+        $this->assertFalse(isset($eventResponseModel->price)); // Floats are not set by default
         $this->assertFalse(isset($eventResponseModel->userId));
         $this->assertEquals(ResponseState::Error, $eventResponseModel->state);
         $this->assertEquals($errorMsg, $eventResponseModel->message);
