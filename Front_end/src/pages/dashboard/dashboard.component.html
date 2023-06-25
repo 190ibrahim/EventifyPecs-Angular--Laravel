@@ -257,13 +257,7 @@
           <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
         </div>
 
-        <div class="input_box">
-          <input type="number" class="form-control" placeholder="Category ID" formControlName="cat_id">
-          <i class="uil uil-folder field"></i>
-        </div>
-        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['cat_id'].invalid">
-          <span *ngIf="createEventForm.controls['cat_id'].errors?.['required']">Category ID is required.</span>
-        </div>
+
 
         <button class="button">Create Event</button>
       </form>

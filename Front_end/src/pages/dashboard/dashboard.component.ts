@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     event_location: new FormControl('', [Validators.required]),
     event_price: new FormControl('', [Validators.required]),
     event_ticket: new FormControl('', [Validators.required]),
-    cat_id: new FormControl('', [Validators.required]),
+    // cat_id: new FormControl('', [Validators.required]),
   });
 
   public onSubmit() {
@@ -74,7 +74,7 @@ const data = {
   event_ticket: this.createEventForm.controls['event_ticket'].value,
   start_date: this.createEventForm.controls['start_date'].value,
   end_date: this.createEventForm.controls['end_date'].value,
-  cat_id: this.createEventForm.controls['cat_id'].value
+  // cat_id: this.createEventForm.controls['cat_id'].value
 };
 
 // You can then use the `data` object to perform your desired actions, such as updating the event.
