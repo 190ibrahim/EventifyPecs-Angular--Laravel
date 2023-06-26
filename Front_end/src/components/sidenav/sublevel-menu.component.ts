@@ -8,9 +8,9 @@ import { fadeInOut, INavbarData } from './helper';
   template: `
     <ul *ngIf="collapsed && data.items && data.items.length > 0"
     [@submenu]="expanded
-      ? {value: 'visible', 
+      ? {value: 'visible',
           params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '*'}}
-      : {value: 'hidden', 
+      : {value: 'hidden',
           params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
       class="sublevel-nav"
     >
@@ -21,7 +21,7 @@ import { fadeInOut, INavbarData } from './helper';
             [ngClass]="getActiveClass(item)"
           >
             <i class="sublevel-link-icon fa fa-circle"></i>
-            <span class="sublevel-link-text" @fadeInOut 
+            <span class="sublevel-link-text" @fadeInOut
                 *ngIf="collapsed">{{item.label}}</span>
             <i *ngIf="item.items && collapsed" class="menu-collapse-icon"
               [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
@@ -34,7 +34,7 @@ import { fadeInOut, INavbarData } from './helper';
             [routerLinkActiveOptions]="{exact: true}"
           >
             <i class="sublevel-link-icon fa fa-circle"></i>
-            <span class="sublevel-link-text" @fadeInOut 
+            <span class="sublevel-link-text" @fadeInOut
                *ngIf="collapsed">{{item.label}}</span>
           </a>
           <div *ngIf="item.items && item.items.length > 0">
@@ -59,14 +59,13 @@ import { fadeInOut, INavbarData } from './helper';
       state('visible', style({
         height: '*'
       })),
-      transition('visible <=> hidden', [style({overflow: 'hidden'}), 
+      transition('visible <=> hidden', [style({overflow: 'hidden'}),
         animate('{{transitionParams}}')]),
       transition('void => *', animate(0))
     ])
   ]
 })
 export class SublevelMenuComponent implements OnInit {
-
   @Input() data: INavbarData = {
     routeLink: '',
     icon: '',
@@ -80,9 +79,17 @@ export class SublevelMenuComponent implements OnInit {
 
   constructor(public router: Router) {}
 
+  /**
+   * Initializes the component.
+   */
   ngOnInit(): void {
   }
 
+  /**
+   * Handles the click event on a sublevel menu item.
+   * Toggles the expansion state of the clicked item and collapses others if multiple is false.
+   * @param item - The clicked sublevel menu item.
+   */
   handleClick(item: any): void {
     if (!this.multiple) {
       if (this.data.items && this.data.items.length > 0) {
@@ -96,10 +103,14 @@ export class SublevelMenuComponent implements OnInit {
     item.expanded = !item.expanded;
   }
 
+  /**
+   * Determines the CSS class for the active sublevel menu item based on the current route.
+   * @param item - The sublevel menu item to check.
+   * @returns The CSS class name for the active sublevel menu item or an empty string if not active.
+   */
   getActiveClass(item: INavbarData): string {
-    return item.expanded && this.router.url.includes(item.routeLink) 
-      ? 'active-sublevel' 
+    return item.expanded && this.router.url.includes(item.routeLink)
+      ? 'active-sublevel'
       : '';
   }
-
 }

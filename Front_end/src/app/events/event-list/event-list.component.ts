@@ -29,12 +29,13 @@ export class EventListComponent {
   constructor(private router: Router, private elementRef: ElementRef, private auth: AuthService) { }
 
 
+  // Change the image URL when the image changes
   imageChange(event: any) {
     this.url = event.target.src;
   }
 
   ngOnInit(): void {
-
+    // Fetch categories and events, and check user role
     this.getCategories();
     this.getEvents();
     this.role_type = localStorage.getItem('role_type');
@@ -46,19 +47,20 @@ export class EventListComponent {
     }
   }
 
-
+  // Open the edit form
   handleFormOpenClick(): void {
     const home = this.elementRef.nativeElement.querySelector(".home");
     home.classList.add("show");
     home.classList.toggle("active");
   }
 
+  // Close the edit form
   handleFormCloseClick(): void {
     const home = this.elementRef.nativeElement.querySelector(".home");
     home.classList.remove("show");
   }
 
-
+  // Create the edit form with form controls
   public editEventForm = new FormGroup({
     event_title: new FormControl('', [Validators.required]),
     event_description: new FormControl('', [Validators.required]),
@@ -69,7 +71,7 @@ export class EventListComponent {
     end_date: new FormControl('', [Validators.required]),
   });
 
-
+  // Fetch an event by its ID for editing
   fetchEventById(eventId: number) {
     this.eventId = eventId;
     this.auth.getEventById(eventId).subscribe(
@@ -83,6 +85,7 @@ export class EventListComponent {
     );
   }
 
+  // Register an event for the current user
   registerEvent(item: any): void {
     const user_id = Number(localStorage.getItem('user_id'));
     const event_id = item.id;
@@ -97,6 +100,7 @@ export class EventListComponent {
     );
   }
 
+  // Handle the form submission for editing an event
   public onSubmit() {
     this.invalidEdit = false;
     this.submitted = true;
@@ -119,8 +123,8 @@ export class EventListComponent {
           this.user = res.data;
           this.router.navigate(['']);
           this.handleFormCloseClick();
-                  this.router.navigate(['']);
-                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['']);
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             window.location.reload();
           });
         },
@@ -131,11 +135,13 @@ export class EventListComponent {
     }
   }
 
+  // Open the edit form with the selected event data
   edit(item: any) {
     this.fetchEventById(item.id);
     this.handleFormOpenClick();
   }
 
+  // Fetch the categories for events
   getCategories() {
     this.auth.getCategories().subscribe(
       (res: any) => {
@@ -149,6 +155,7 @@ export class EventListComponent {
     );
   }
 
+  // Delete an event
   del(item: any) {
     this.auth.deleteEvent(item.id).subscribe(
       (res: any) => {
@@ -160,6 +167,7 @@ export class EventListComponent {
     );
   }
 
+  // Fetch all events and registration count for each event
   getEvents() {
     this.auth.getEvents().subscribe(
       (res: any) => {
@@ -181,6 +189,7 @@ export class EventListComponent {
     );
   }
 
+  // Fetch the registration count for an event
   getRegistrationCount(eventId: number) {
     return this.auth.getRegistrationCount(eventId);
   }

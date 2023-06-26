@@ -53,16 +53,30 @@ export class HeaderComponent implements OnInit {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
   }
 
+  /**
+   * Returns the CSS class to be applied to the head element based on the collapsed and screenWidth inputs.
+   * If collapsed is true and screenWidth is greater than 768, 'head-trimmed' class is returned.
+   * If collapsed is true and screenWidth is less than or equal to 768, 'head-md-screen' class is returned.
+   * @returns string - The CSS class to be applied to the head element.
+   */
   getHeadClass(): string {
     return this.collapsed && this.screenWidth > 768 ? 'head-trimmed' : 'head-md-screen';
   }
 
-
-
+  /**
+   * Checks if the search should be shown as an overlay based on the inner width of the window.
+   * If the inner width is less than 845, the search can be shown as an overlay.
+   * @param innerWidth - The inner width of the window.
+   */
   checkCanShowSearchAsOverlay(innerWidth: number): void {
     this.canShowSearchAsOverlay = innerWidth < 845;
   }
 
+  /**
+   * Handles the click event when the form open button is clicked.
+   * Toggles the visibility of the form container and sets the active form based on the form type.
+   * @param formType - The type of form to be displayed (signup or login).
+   */
   handleFormOpenClick(formType: string): void {
     const home = this.elementRef.nativeElement.querySelector(".home");
 
@@ -77,11 +91,20 @@ export class HeaderComponent implements OnInit {
     loginForm.classList.toggle("active", formType === "login");
   }
 
+  /**
+   * Handles the click event when the form close button is clicked.
+   * Hides the form container.
+   */
   handleFormCloseClick(): void {
     const home = this.elementRef.nativeElement.querySelector(".home");
     home.classList.remove("show");
   }
 
+  /**
+   * Handles the click event when the password show/hide button is clicked.
+   * Toggles the visibility of the password input field and updates the eye icon.
+   * @param event - The click event object.
+   */
   handlePasswordShowHideClick(event: Event): void {
     event.preventDefault();
     const icon = event.target as HTMLElement;
@@ -97,6 +120,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Handles the click event when the login/signup button is clicked.
+   * Toggles the visibility of the login/signup form based on the form type.
+   * @param event - The click event object.
+   * @param formType - The type of form to be displayed (signup or login).
+   */
   handleLoginSignupClick(event: Event, formType: string): void {
     event.preventDefault();
     const formContainer = this.elementRef.nativeElement.querySelector(".form_container");
@@ -108,13 +137,18 @@ export class HeaderComponent implements OnInit {
     loginForm.classList.toggle("active", formType === "login");
   }
 
-
   // login
+  /**
+   * The login form group.
+   */
   public loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       password: new FormControl('', [Validators.required])
   });
 
+  /**
+   * The register form group with validation rules.
+   */
   public registerForm: FormGroup = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -126,6 +160,11 @@ export class HeaderComponent implements OnInit {
       nationality: new FormControl('', [Validators.required]),
   }, { validators: passwordValidator('password', 'confirm') });
 
+  /**
+   * Handles the form submission.
+   * If the login form is valid, attempts to login the user using the provided credentials.
+   * If the register form is valid, attempts to register a new user using the provided details.
+   */
   public onSubmit() {
     if (this.loginForm.valid) {
       this.loginSubmitted = true;
@@ -179,7 +218,7 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('username', this.user.first_name);
         localStorage.setItem('role_type', 'user');
         this.router.navigate(['']);
-                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             window.location.reload();
           });
       },
@@ -191,18 +230,27 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Logs out the user by clearing the local storage and reloading the page.
+   */
   public logout(): void {
     localStorage.clear();
     this.router.navigate(['']);
-          this.isUserLoggedin = false;
-        this.router.navigate(['']);
-                  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            window.location.reload();
-          });
+    this.isUserLoggedin = false;
+    this.router.navigate(['']);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      window.location.reload();
+    });
   }
 }
 
-
+/**
+ * Custom password validator function.
+ * Validates that the value of a control matches the value of another control.
+ * @param controlName - The name of the control to validate.
+ * @param matchingControlName - The name of the control to compare against.
+ * @returns ValidatorFn - The validation function.
+ */
 export function passwordValidator(controlName: string, matchingControlName: string) {
     return (group: AbstractControl) => {
         const pass = group.get(controlName)?.value;
