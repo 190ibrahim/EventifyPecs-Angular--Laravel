@@ -1,0 +1,91 @@
+<main>
+    <div class="container">
+       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+          <div class="container">
+             <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                   <!-- <div class="d-flex justify-content-center py-4"> <a routerLink="/" class="logo d-flex align-items-center w-auto"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Admin</span> </a></div> -->
+                   <div class="card mb-3">
+                      <div class="card-body">
+                         <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                            <p class="text-center small">Enter your personal details to create an account</p>
+                         </div>
+                         <form class="row g-3 needs-validation" novalidate [formGroup]="formg" (ngSubmit)="onSubmit()">
+                            <div class="col-12">
+                               <label for="event_title" class="form-label">Event Title</label>
+                               <input formControlName="event_title" type="text" name="event_title" class="form-control" id="event_title" required>
+                               <div class="invalid-feedback">Please enter the event title.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_description" class="form-label">Event Description</label>
+                               <input formControlName="event_description" type="text" name="event_description" class="form-control" id="event_description" required>
+                               <div class="invalid-feedback">Please enter the event description.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_image" class="form-label">Event Image</label>
+                               <input formControlName="event_image" type="file" name="event_image" class="form-control" id="event_image" required>
+                               <div class="invalid-feedback">Please choose an event image.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_created" class="form-label">Event Created</label>
+                               <input formControlName="event_created" type="date" name="event_created" class="form-control" id="event_created" required>
+                               <div class="invalid-feedback">Please enter the event created date.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="start_date" class="form-label">Start Date</label>
+                               <input formControlName="start_date" type="date" name="start_date" class="form-control" id="start_date" required>
+                               <div class="invalid-feedback">Please enter the start date.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="end_date" class="form-label">End Date</label>
+                               <input formControlName="end_date" type="date" name="end_date" class="form-control" id="end_date" required>
+                               <div class="invalid-feedback">Please enter the end date.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_badge" class="form-label">Event Badge</label>
+                               <input formControlName="event_badge" type="file" name="event_badge" class="form-control" id="event_badge" required>
+                               <div class="invalid-feedback">Please choose an event badge.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_ticket" class="form-label">Event Ticket</label>
+                               <input formControlName="event_ticket" type="file" name="event_ticket" class="form-control" id="event_ticket" required>
+                               <div class="invalid-feedback">Please choose an event ticket.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="waiting_list" class="form-label">Waiting List</label>
+                               <input formControlName="waiting_list" type="number" name="waiting_list" class="form-control" id="waiting_list" required>
+                               <div class="invalid-feedback">Please enter the waiting list number.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="event_status" class="form-label">Event Status</label>
+                               <input formControlName="event_status" type="number" name="event_status" class="form-control" id="event_status" required>
+                               <div class="invalid-feedback">Please enter the event status.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="user_id" class="form-label">User ID</label>
+                               <input formControlName="user_id" type="number" name="user_id" class="form-control" id="user_id" required>
+                               <div class="invalid-feedback">Please enter the user ID.</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="remember_token" class="form-label">Remember Token</label>
+                               <input formControlName="remember_token" type="text" name="remember_token" class="form-control" id="remember_token" required>
+                               <div class="invalid-feedback">Please enter the remember token.</div>
+                            </div>
+                            <!-- End of new fields -->
+ 
+                            <div class="col-12"> 
+                               <button class="btn btn-primary w-100" type="submit">Create Event</button>
+                            </div>
+                          
+                         </form>
+                      </div>
+                   </div>
+                   <!-- <div class="credits"> Loved by <a href="https://freeetemplates.com/">FreeeTemplates</a></div> -->
+                </div>
+             </div>
+          </div>
+       </section>
+    </div>
+ </main>
+ 

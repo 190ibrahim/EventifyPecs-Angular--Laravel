@@ -1,0 +1,223 @@
+<div class="head" [ngClass]="getHeadClass()">
+  <div class="head-content">
+    <div class="head-content-left">
+      <div class="search-container">
+        <div class="normal-search">
+          <input type="search" class="search" name="" id="" placeholder="Search...">
+          <i class="far fa-search search-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="head-content-right">
+      <div class="head-menu">
+        <div class="head-menu-item" *ngIf="!isUserLoggedin">
+          <button class="head-menu-item-btn sign ripple" (click)="handleFormOpenClick('login')">
+            <i class="far fa-sign-in-alt menu-icon" id="form-open"></i> Sign In
+          </button>
+        </div>
+        <div class="head-menu-item" *ngIf="!isUserLoggedin">
+          <button class="head-menu-item-btn sign sign-up ripple" (click)="handleFormOpenClick('signup')">
+            <i class="far fa-user-plus menu-icon"></i> Sign Up
+          </button>
+        </div>
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
+          <button class="head-menu-item-btn ripple">
+            <img src="assets/sidenav/flags/us.jpg" class="flag" alt="flag">
+          </button>
+        </div>
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
+          <button class="head-menu-item-btn ripple">
+            <i class="far fa-power-off menu-icon" (click)="logout()"></i>
+          </button>
+        </div>
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
+          <button class="head-menu-item-btn ripple">
+            <i class="far fa-bell menu-icon"></i>
+          </button>
+        </div>
+        <div class="head-menu-item" *ngIf="isUserLoggedin">
+          <button class="head-menu-item-btn ripple">
+            <i class="far fa-comment-alt menu-icon"></i>
+          </button>
+        </div>
+      </div>
+      <div class="head-user-avatar-container" *ngIf="isUserLoggedin">
+        <div class="head-user-avatar">
+          <img src="assets/sidenav/user3.jpg" alt="user" class="user-avatar">
+          <div class="circle-indicator pulse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="home" *ngIf="!isUserLoggedin">
+    <div class="form_container">
+      <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
+      <!-- Login From -->
+      <div class="form login_form">
+        <form class="register-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2>Sign In</h2>
+
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Email" formControlName="username" />
+            <i class="uil uil-envelope-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="loginSubmitted && loginForm.controls.username.invalid">
+            <span *ngIf="loginForm.controls.username.errors?.['required']">Username is required.</span>
+            <span *ngIf="loginForm.controls.username.errors?.['minlength']">Username must be at least 3 characters long.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidLogin">
+            Username or password is invalid.
+          </div>
+
+
+          <div class="input_box">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password"/>
+            <i class="uil uil-lock password"></i>
+            <i class="uil uil-eye-slash pw_hide" (click)="handlePasswordShowHideClick($event)"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="loginSubmitted && loginForm.controls.password.invalid">
+            Password is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidLogin">
+            Username or password is invalid.
+          </div>
+
+          <div class="option_field">
+            <span class="checkbox">
+              <input type="checkbox" id="check" />
+              <label for="check">Remember me</label>
+            </span>
+            <a href="#" class="forgot_pw">Forgot password?</a>
+          </div>
+          <button class="button">Sign In Now</button>
+            <div class="login_signup">Don't have an account? <a href="#" id="signup" (click)="handleLoginSignupClick($event, 'signup')">Sign Up</a>
+            </div>
+        </form>
+      </div>
+      <!-- Signup From -->
+      <div class="form signup_form">
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <h2>Sign Up</h2>
+
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+            <i class="uil uil-envelope-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['email'].invalid">
+            <span *ngIf="registerForm.controls['email'].errors?.['required']">Email is required.</span>
+            <span *ngIf="registerForm.controls['email'].errors?.['email']">Email address has an incorrect format.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+          <!-- Username -->
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Username" formControlName="username">
+            <i class="uil uil-user field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['username'].invalid">
+            <span *ngIf="registerForm.controls['username'].errors?.['required']">Username is required.</span>
+            <span *ngIf="registerForm.controls['username'].errors?.['minlength']">Username must be at least 3 characters
+              long.</span>
+            <span *ngIf="registerForm.controls['username'].errors?.['maxlength']">Username must not exceed 20 characters.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+
+          <!-- First Name -->
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="First Name" formControlName="fname">
+            <i class="uil uil-user field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['fname'].invalid">
+            <span *ngIf="registerForm.controls['fname'].errors?.['required']">First name is required.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+          <!-- Last Name -->
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lname">
+            <i class="uil uil-user field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['lname'].invalid">
+            <span *ngIf="registerForm.controls['lname'].errors?.['required']">Last name is required.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+
+        <!-- Nationality Input -->
+        <div class="input_box">
+          <input type="text" class="form-control" formControlName="nationality" placeholder="Nationality">
+          <i class="uil uil-globe field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['nationality'].invalid">
+          <span *ngIf="registerForm.controls['nationality'].errors?.['required']">Nationality is required.</span>
+        </div>
+
+      <!-- Date of Birth -->
+      <div class="input_box">
+        <input type="date" class="form-control" placeholder="Date of Birth" formControlName="date_of_birth">
+        <i class="uil uil-calendar-alt field"></i>
+      </div>
+      <div class="invalid-feedback" *ngIf="submitted && registerForm.controls['date_of_birth'].invalid">
+        <span *ngIf="registerForm.controls['date_of_birth'].errors?.['required']">Date of Birth is required.</span>
+      </div>
+      <div class="invalid-feedback" *ngIf="invalidRegister">
+        Part(s) of the form are invalid.
+      </div>
+
+
+
+          <div class="input_box">
+          <input type="password" class="form-control" placeholder="Password" formControlName="password">
+          <i class="uil uil-lock password"></i>
+            <i class="uil uil-eye-slash pw_hide" (click)="handlePasswordShowHideClick($event)"></i>
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="submitted && (registerForm.controls['confirm'].invalid || registerForm.errors?.['confirm'])">
+            <span *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</span>
+            <span *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters
+              long.</span>
+            <span *ngIf="!registerForm.controls['password'].errors && registerForm.errors?.['confirm']">Password and confirmtion
+              must match.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+          <div class="input_box">
+            <input type="password" class="form-control" placeholder="Password" formControlName="confirm">
+            <i class="uil uil-lock password"></i>
+            <i class="uil uil-eye-slash pw_hide" (click)="handlePasswordShowHideClick($event)"></i>
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="submitted && (registerForm.controls['confirm'].invalid || registerForm.errors?.['confirm'])">
+            <span *ngIf="registerForm.controls['confirm'].errors?.['required']">Password is required.</span>
+            <span *ngIf="registerForm.controls['confirm'].errors?.['minlength']">Password must be at least 6 characters
+              long.</span>
+            <span *ngIf="!registerForm.controls['confirm'].errors && registerForm.errors?.['confirm']">Password and confirmtion
+              must match.</span>
+          </div>
+          <div class="invalid-feedback" *ngIf="invalidRegister">
+            Part(s) of the form are invalid.
+          </div>
+
+          <button class="button">Sign Up Now</button>
+            <div class="login_signup">Already have an account? <a href="#" id="login" (click)="handleLoginSignupClick($event, 'login')">Sign In</a>
+            </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

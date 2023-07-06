@@ -1,0 +1,106 @@
+<section class="home">
+  <div class="containers">
+    <div class="title">
+      <h2><span> Pécs's </span> Heart</h2>
+    </div>
+    <div class="row grid-container">
+      <div class="col-md-3" *ngFor="let item of events">
+        <div class="card">
+          <div class="card-main">
+            <div class="count">{{ item.registrationCount }}</div>
+            <div class="image">
+              <img src="../../../assets/sidenav/profile-bg-3.png" alt="">
+            </div>
+            <div class="event-date event-date-green">{{ item.start_date }}</div>
+            <div class="card-line"></div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">{{ item.event_title }}</a>
+            <p><span class="location">{{ item.event_location }}</span></p>
+            <p><span class="price">${{ item.event_price }}</span></p>
+          </div>
+          <div class="register">
+            <button (click)="registerEvent(item)" class="register-button" *ngIf="isUser || isAdmin">Register</button>
+          </div>
+          <div class="buttons" *ngIf="isAdmin">
+            <!-- <button class="view-button" >View</button> -->
+            <button class="view-button" (click)="edit(item)" >Edit</button>
+            <button class="view-button" (click)="del(item)" >Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="form_container">
+      <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
+
+      <div class="form">
+        <form class="register-form" [formGroup]="editEventForm" (ngSubmit)="onSubmit()">
+          <h2>Edit Event</h2>
+
+          <div class="input_box  ">
+            <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
+            <i class="uil uil-envelope-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_title'].invalid">
+            <span *ngIf="editEventForm.controls['event_title'].errors?.['required']">Event Title is required.</span>
+          </div>
+
+          <div class="input_box">
+            <textarea class="form-control textarea_box" placeholder="Event Description" formControlName="event_description"></textarea>
+            <i class="fas fa-align-left field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_description'].invalid">
+            <span *ngIf="editEventForm.controls['event_description'].errors?.['required']">Event Description is
+              required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
+            <i class="uil uil-location-pin-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_location'].invalid">
+            <span *ngIf="editEventForm.controls['event_location'].errors?.['required']">Event Location is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Price" formControlName="event_price">
+            <i class="uil uil-dollar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_price'].invalid">
+            <span *ngIf="editEventForm.controls['event_price'].errors?.['required']">Event Price is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
+            <i class="fas fa-ticket-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['event_ticket'].invalid">
+            <span *ngIf="editEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="datetime-local" class="form-control" placeholder="Start Date" formControlName="start_date">
+            <i class="uil uil-calendar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['start_date'].invalid">
+            <span *ngIf="editEventForm.controls['start_date'].errors?.['required']">Start Date is required.</span>
+          </div>
+
+          <div class="input_box">
+            <input type="datetime-local" class="form-control" placeholder="End Date" formControlName="end_date">
+            <i class="uil uil-calendar-alt field"></i>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && editEventForm.controls['end_date'].invalid">
+            <span *ngIf="editEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
+          </div>
+
+
+
+          <button class="button">Edit Event</button>
+        </form>
+      </div>
+    </div>
+  </section>

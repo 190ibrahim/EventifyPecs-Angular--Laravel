@@ -1,0 +1,497 @@
+.containers {
+  width: 100%;
+  margin: 0 auto;
+
+
+}
+
+.title {
+  margin-bottom: 10px;
+  padding-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  width: 200px;
+  height: 3px;
+  background: #dbdbdb;
+  opacity: .6;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title::after {
+  content: '\f005';
+  font-family: FontAwesome;
+  color: #dbdbdb;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  background: #f4f7fa;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+
+.title p {
+  color: #999;
+  font-style: italic;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.title h2 {
+  font-size: 35px;
+  color: #131313;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title span {
+  color: #fa0;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+.card {
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  will-change: transform, box-shadow;
+  perspective: 1000px;
+
+}
+
+.card:hover {
+  transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-main {
+  transform-style: preserve-3d;
+}
+
+.card-main:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: opacity 0.3s;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover .card-main:before {
+  opacity: 1;
+}
+
+.count {
+  background: #fa0;
+  z-index: 3;
+  position: relative;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  width: 70px;
+  height: 30px;
+  border-radius: 0 15px 15px 0;
+  line-height: 30px;
+  font-style: italic;
+  left: -9px;
+  top: 30px;
+}
+
+.count::after {
+  border-top: 6px solid #c80;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  border-left: 8px solid transparent;
+  border-right: 0px solid transparent;
+}
+
+.event-date {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 2;
+  line-height: 100%;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.event-date-green {
+  padding: 5px 8px;
+  background-color: #5cb85c;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-line {
+  height: 2px;
+  background: #f1f1f1;
+}
+
+.card:hover .image {
+  transform: translateZ(80px) scale(1.05);
+}
+
+.card:hover .cart-line {
+  transform: scaleX(1);
+}
+
+.content {
+  padding: 16px 0;
+  margin-left: 12px;
+}
+
+.content a {
+  font-size: 22px;
+  color: #555;
+  font-weight: 700;
+  text-transform: capitalize;
+  transition: all .3s;
+  text-decoration: none;
+}
+
+.content a:hover {
+  color: #fa0;
+  text-decoration: none;
+}
+
+.content p {
+  margin-bottom: 0;
+}
+
+.content .price {
+  font-size: 20px;
+  color: #fa0;
+  font-weight: 700;
+  font-style: italic;
+  margin-right: 6px;
+}
+
+.content .location {
+  line-height: 18px;
+  display: inline-block;
+  color: #888;
+  font-weight: 400;
+}
+
+
+.register {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 12px;
+  margin-left: 12px;
+  margin-bottom: 6px;
+}
+
+.buttons button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #fa0;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.register button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #fa0;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+
+.button button:hover {
+  background-color: #e09000;
+}
+.register button:hover {
+  background-color: #e09000;
+}
+
+
+
+.delete-button {
+  margin-right: 0;
+}
+
+
+
+
+
+
+
+/* Home */
+.home {
+  background-position: center;
+  transition: all .5s ease;
+}
+
+.home::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--overlay-color);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--overlay-transition-duration) ease-out;
+}
+
+.home.show::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Adjust the opacity as needed */
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out;
+}
+
+.home.show .form_container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.home.show::before,
+.home.show .form_container {
+  pointer-events: auto;
+}
+
+.home.show::before {
+  opacity: 1;
+}
+
+/* From */
+.form_container {
+  margin-top: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: var(--form-container-max-width);
+  width: auto;
+  z-index: 101;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  overflow-y: auto;
+}
+
+.home.show .form_container {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+.form_container.active {
+  display: block;
+}
+
+
+.form_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #0b0217;
+  font-size: 22px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.form_container h2 {
+  font-size: 22px;
+  color: #0b0217;
+  text-align: center;
+}
+
+.input_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+.input_box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+}
+
+.input_box input:focus {
+  border-color: #fa0;
+}
+
+.input_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+
+.input_box i.field {
+  left: 0;
+}
+
+.input_box input:focus~i.field {
+  color: #fa0;
+}
+
+
+
+.form_container a {
+  color: #fa0;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.form_container a:hover {
+  text-decoration: underline;
+}
+
+
+.form_container .button {
+  background: #fa0;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 1.875rem;
+}
+
+.form_container .button:hover {
+  background-color: #e09000;
+}
+
+form.ng-loginSubmitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+form.ng-submitted input.ng-invalid {
+  background-color: #ff000020;
+  border-radius: 6px;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 12px;
+  color: #E8426E;
+}
+
+.textarea_box {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+  /* font:inherit; */
+}
+
+.textarea_box:focus {
+  border-color: #fa0;
+}
+
+.input_box.select_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+.input_box.select_box select {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+  appearance: none;
+
+}
+
+.input_box.select_box select option:focus {
+  border-color: #fa0;
+}
+
+.input_box.select_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+
+.input_box.select_box i.field {
+  left: 0;
+}
+
+.input_box.select_box select:focus~i.field {
+  color: #fa0;
+}

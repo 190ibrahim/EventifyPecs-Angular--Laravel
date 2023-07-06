@@ -1,0 +1,299 @@
+<!-- CONTENT -->
+<section id="content">
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h2>Dashboard</h2>
+      </div>
+      <a class="btn-event" (click)="handleFormOpenClick()">
+        <i class='bx bx-calendar-plus'></i>
+        <span class="text">Create Event</span>
+      </a>
+    </div>
+
+    <ul class="box-info">
+      <li>
+        <i class='bx bxs-calendar-check'></i>
+        <span class="text">
+          <h3>{{ events.length }}</h3>
+          <p>Events</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <h3>2834</h3>
+          <p>Users</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-dollar-circle'></i>
+        <span class="text">
+          <h3>$2543</h3>
+          <p>Registration</p>
+        </span>
+      </li>
+    </ul>
+
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Events</h3>
+          <i class='bx bx-search'></i>
+          <i class='bx bx-filter'></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>title</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of events">
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>{{ item.event_title }}</p>
+              </td>
+              <td>{{ item.start_date }}</td>
+              <td>
+                <span class="status" [ngClass]="getStatusClass(item)">{{ getStatusText(item) }}</span>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <div class="todo">
+        <div class="head">
+          <h3>Todos</h3>
+          <i class='bx bx-plus'></i>
+          <i class='bx bx-filter'></i>
+        </div>
+        <ul class="todo-list">
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="not-completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="not-completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Recent Registrations</h3>
+          <i class='bx bx-search'></i>
+          <i class='bx bx-filter'></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Date Order</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>John Doe</p>
+              </td>
+              <td>01-10-2021</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>John Doe</p>
+              </td>
+              <td>01-10-2021</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>John Doe</p>
+              </td>
+              <td>01-10-2021</td>
+              <td><span class="status process">Process</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>John Doe</p>
+              </td>
+              <td>01-10-2021</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="../../assets/sidenav/user3.jpg">
+                <p>John Doe</p>
+              </td>
+              <td>01-10-2021</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="todo">
+        <div class="head">
+          <h3>Todos</h3>
+          <i class='bx bx-plus'></i>
+          <i class='bx bx-filter'></i>
+        </div>
+        <ul class="todo-list">
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="not-completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+          <li class="not-completed">
+            <p>Todo List</p>
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <section class="home">
+  <div class="form_container">
+    <i class="uil uil-times form_close" (click)="handleFormCloseClick()"></i>
+
+    <div class="form">
+      <form class="register-form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+        <h2>Create Event</h2>
+
+        <div class="input_box">
+          <input type="text" class="form-control" placeholder="Event Title" formControlName="event_title">
+          <i class="uil uil-envelope-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_title'].invalid">
+          <span *ngIf="createEventForm.controls['event_title'].errors?.['required']">Event Title is required.</span>
+        </div>
+
+        <div class="input_box">
+          <textarea class="form-control textarea_box" placeholder="Event Description"
+            formControlName="event_description"></textarea>
+          <i class="uil uil-align-left-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_description'].invalid">
+          <span *ngIf="createEventForm.controls['event_description'].errors?.['required']">Event Description is
+            required.</span>
+        </div>
+
+
+
+        <div class="input_box">
+          <input type="text" class="form-control" placeholder="Event Location" formControlName="event_location">
+          <i class="uil uil-location-point field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_location'].invalid">
+          <span *ngIf="createEventForm.controls['event_location'].errors?.['required']">Event Location is required.</span>
+        </div>
+
+        <div class="input_box">
+          <input type="number" class="form-control" placeholder="Event Price" formControlName="event_price">
+          <i class="uil uil-dollar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_price'].invalid">
+          <span *ngIf="createEventForm.controls['event_price'].errors?.['required']">Event Price is required.</span>
+        </div>
+
+        <div class="input_box">
+          <input type="number" class="form-control" placeholder="Event Ticket" formControlName="event_ticket">
+          <i class="uil uil-ticket-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['event_ticket'].invalid">
+          <span *ngIf="createEventForm.controls['event_ticket'].errors?.['required']">Event Ticket is required.</span>
+        </div>
+
+
+        <div class="input_box">
+          <input type="datetime-local" class="form-control" placeholder="Start Date" formControlName="start_date">
+          <i class="uil uil-calendar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['start_date'].invalid">
+          <span *ngIf="createEventForm.controls['start_date'].errors?.['required']">Start Date is required.</span>
+        </div>
+
+        <div class="input_box">
+          <input type="datetime-local" class="form-control" placeholder="End Date" formControlName="end_date">
+          <i class="uil uil-calendar-alt field"></i>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && createEventForm.controls['end_date'].invalid">
+          <span *ngIf="createEventForm.controls['end_date'].errors?.['required']">End Date is required.</span>
+        </div>
+
+
+
+        <button class="button">Create Event</button>
+      </form>
+    </div>
+  </div>
+  </section>
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+
+    <!-- <div class="task">
+          <span class="bar completed"></span>
+          <div class="details">
+            <div>completed</div>
+            <p>1 task</p>
+          </div>
+          <i class="far fa-pen edit"></i>
+        </div>
+        <div class="task">
+          <span class="bar active"></span>
+          <div class="details">
+            <div>Active</div>
+            <p>1 task</p>
+          </div>
+          <i class="far fa-pen edit"></i>
+        </div>
+        <div class="task">
+          <span class="bar new"></span>
+          <div class="details">
+            <div>Assigned</div>
+            <p>12 task</p>
+          </div>
+          <i class="far fa-pen edit"></i>
+        </div>
+         <button>
+          <i class="far fa-plus"></i>
+          Create New Group</button> -->
+
+
