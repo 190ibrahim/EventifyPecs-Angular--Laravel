@@ -5,7 +5,7 @@ So my teammates Chaimae, Dita, and Ussayed let's do it :)
 
 ## Project Development Process
 
-### Phase 1: Planning and Setup
+### Sprint 1: Planning and Setup
 
 - Set up project repository on GitHub
 - Set up local development environments for team members
@@ -13,20 +13,20 @@ So my teammates Chaimae, Dita, and Ussayed let's do it :)
 - Determine project scope and limitations: _This task involves setting boundaries for the project, outlining what it will and will not include._
 - Create a project timeline and milestones: \*This task involves creating a roadmap for the project, breaking down the work into smaller, manageable tasks and setting deadlines for each task, let's put in our mind that the deadline is the **_30th of May_**.\*
 
-### Phase 2: Design and Front-end Development
+### Sprint 2: Design and Front-end Development
 
 - Design the interface of the project: _This task involves designing the user interface and user experience before we go ahead and start implemnting it, like what we did in system engneenring, using this website `https://moqups.com/` or any other websites_
 - Design and implement UI/UX using Angular and CSS: _This task involves designing the user interface and user experience using Angular and CSS. It includes creating and implementing a style guide, color schemes, typography, and other design elements._
 - Implement responsive design for mobile devices: _This task involves designing and implementing the web application to be responsive, meaning it should adjust to different screen sizes and be optimized for use on mobile devices. (additionl feature)_
 - These are the main tasks for now, then when we agree on a project idea there will be more tasks.
 
-### Phase 3: Back-end Development
+### Sprint 3: Back-end Development
 
 - Design and implement database schema: _This involves designing and creating the database tables and relationships required to store the application data. like what we did in system engneenring, using this website `https://drawsql.app/` or any other websites_
 - Implement user authentication and authorization: _This involves setting up the necessary authentication and authorization mechanisms to allow users to securely access and manage their accounts and information._
 - These are the main tasks for now, then when we agree on a project idea there will be more tasks.
 
-### Phase 4: Testing
+### Sprint 4: Testing
 
 - Implement unit testing: _I do no have any idea on how to do this, but I remember the professer said he will teach as this, and we have to implement it_
 - Fix and catch any errors or bugs.
